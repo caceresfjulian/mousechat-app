@@ -3,7 +3,7 @@ import React from 'react';
 import onlineIcon from '../../icons/onlineIcon.png';
 
 import './TextContainer.css';
-// Probando el control de versiones sdfsd
+// Probando el control de versiones git
 
 const TextContainer = ({ users }) => (
   <div className="textContainer">
