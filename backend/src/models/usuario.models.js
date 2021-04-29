@@ -5,7 +5,10 @@ const usuarioSchema = new mongoose.Schema({
     //definimos las características de los usuarios, de la forma que serán almacenados en la db.
     email: {type: String, required: true},
     passwordHash: {type: String, required: true}, 
-    base64: {data: Buffer, type: String}
+    base64: {data: Buffer, type: String, required: true}, 
+    username: {type: String, required: true}, 
+    bio: {type: String, required: false},
+    country: {type: String, required: false}
 });
 
 const User = mongoose.model('usuario', usuarioSchema);
