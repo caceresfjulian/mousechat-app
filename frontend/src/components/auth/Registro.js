@@ -7,8 +7,7 @@ function Registro() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordVerify, setPasswordVerify] = useState("");
-    const [file, setFile] = useState("");
-    const [imagePreview, setImagePreview] = useState("");
+const [imagePreview, setImagePreview] = useState("");   
     const [base64, setBase64] = useState("");
     //definimos los datos que serán capturados para ser enviados al back.
 
@@ -23,14 +22,11 @@ function Registro() {
         if (reader !== undefined && file !== undefined) {
             if (file.size > 2097152) {
                 alert('Verifique el archivo e intente de nuevo.');
-                setFile("");
             } else if (file.type !== "image/png") {
                 alert('Verifique la extensión del archivo e intente de nuevo.');
-                setFile("");
             }
             else {
                 reader.onloadend = (e) => {
-                    setFile(file);
                     setImagePreview(reader.result);
                     setBase64(btoa(e.target.result));
                 }
