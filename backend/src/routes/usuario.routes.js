@@ -5,7 +5,6 @@ const User = require('../models/usuario.models');
 const bcrypt = require('bcryptjs');
 //Requerimos el bcrypt para encriptar.
 const jwt = require('jsonwebtoken');
-const Empleado = require('../models/empleado.models');
 //Requerimos JSONWebToken para manejar el loggeo de usuarios. Recuerda crear una variable de entorno con...
 //...una contraseña para jwt. 
 
@@ -17,12 +16,14 @@ router.post('/', async (req, res) => {
     //Definimos directamente, sin controlador,  qué se hará en caso de post. Esto podría ser puesto en...
     //...la carpeta controllers para mayor modularidad. 
     try {
-        const { email, password, passwordVerify } = req.body;
+        const { email, password, passwordVerify, base64 } = req.body;
+
+        if (base64) console.log(email, password);
         //Desestructuración del cuerpo de la solicitud que será enviada en formato JSON. (Esto lo probamos
         //...enviando una solicitud desde POSTMAN con cuerpo en formato JSON y haciendo console.log).
 
         //validación
-        if (!email || !password || !passwordVerify) {
+        if (!email || !password || !passwordVerify || !base64) {
             //Si no hay email o ps o psv, devolver mensaje.
             return res
                 .status(400)
@@ -60,11 +61,11 @@ router.post('/', async (req, res) => {
         //Se crea algo llamado 'salt'. No sé para qué sirve, pero se necesita.
         const passwordHash = await bcrypt.hash(password, salt);
         //Aquí se almacena en una constante la contraseña encriptada gracias al método .hash. 
-
+        
         //Guardar usuario y contraseña encriptada en la base de datos.
 
         const nuevoUsuario = new User({
-            email, passwordHash
+            email, passwordHash, base64
             //Solo se pone email y passwordHash, ya que ellos han sido previamente definidos.
         })
 
@@ -175,8 +176,8 @@ router.get('/loggedIn', (req, res) => {
     try {
         const token = req.cookies.token;
         if (!token) {
-            return res.json({value: false})
-            .status(401);
+            return res.json({ value: false })
+                .status(401);
             ;
         }
         //cambiamos por falsa la respuesta en formato JSON 
@@ -184,16 +185,16 @@ router.get('/loggedIn', (req, res) => {
         jwt.verify(token, process.env.JWT_SECRET);
         //No es necesario el user ni el next.
 
-        const {payload} = jwt.decode(token, { complete: true });
-        const {email} = payload;
+        const { payload } = jwt.decode(token, { complete: true });
+        const { email } = payload;
 
         res
-            .json({email, value: true})
-            // .send(true);
+            .json({ email, value: true })
+        // .send(true);
 
     } catch (error) {
-        res.json({value: false})
-        .status(401);
+        res.json({ value: false })
+            .status(401);
     }
 })
 
