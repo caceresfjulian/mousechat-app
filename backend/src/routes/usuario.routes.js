@@ -65,7 +65,7 @@ router.post('/', async (req, res) => {
         //Guardar usuario y contraseña encriptada en la base de datos.
 
         const nuevoUsuario = new User({
-            email, passwordHash, base64
+            email, passwordHash, base64, username:email, bio:"", country:""
             //Solo se pone email y passwordHash, ya que ellos han sido previamente definidos.
         })
 
