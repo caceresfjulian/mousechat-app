@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const usuarioSchema = new mongoose.Schema({
     //definimos las características de los usuarios, de la forma que serán almacenados en la db.
     email: {type: String, required: true},
-    passwordHash: {type: String, required: true}
+    passwordHash: {type: String, required: true}, 
+    base64: {data: Buffer, type: String}
 });
 
 const User = mongoose.model('usuario', usuarioSchema);
