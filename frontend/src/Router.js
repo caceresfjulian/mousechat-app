@@ -7,6 +7,7 @@ import AuthContext from './components/context/AuthContext';
 import Customers from './components/customers/Customers';
 import Join from './components/join/Join';
 import Navbar from './components/layout/navbar';
+import MyProfile from './components/myProfile/MyProfile';
 
 //Aquí se crean las diferentes rutas del frontend gracias a react-router-dom.
 
@@ -23,6 +24,7 @@ function Router() {
                 <Switch>
                     <Route exact path="/join" component={Join} />
                     <Route path="/chat" component={Chat} />
+                    <Route path="/myProfile" component={MyProfile}/>
                     <Route path="/customer" component={Customers}/>
                     <Route path="*" component={Join}/>
                 </Switch>

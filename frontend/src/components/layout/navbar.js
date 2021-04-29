@@ -40,6 +40,9 @@ function Navbar({ email }) {
                                     <Link className="nav-link" to="/join">Unirse a Chat</Link>
                                 </li>
                                 <li className="nav-item">
+                                    <Link className="nav-link" to="/myProfile">My Profile</Link>
+                                </li>
+                                <li className="nav-item">
                                     <Link className="nav-link" to="/Customer">Administrar</Link>
                                 </li>
                                 <LogOutBtn className="btn btn-outline-success" />
