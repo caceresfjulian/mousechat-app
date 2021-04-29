@@ -42,7 +42,7 @@ app.set('Port', PORT);
 
 app.use(morgan('dev'));
 
-app.use(express.json());
+app.use(express.json({ limit: '5mb'}));
 //Para permitir el body parsing en formato JSON, utilizamos esta funcionalidad de express. 
 
 app.use(cookieParser());
