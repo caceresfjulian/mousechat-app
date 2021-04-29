@@ -34,6 +34,8 @@ function Registro() {
                     setImagePreview(reader.result);
                     setBase64(btoa(e.target.result));
                 }
+            reader.readAsDataURL(file); 
+            // Esta línea es muy importante. Sin ella, no se actualizan los estados
             }
         }
     }
