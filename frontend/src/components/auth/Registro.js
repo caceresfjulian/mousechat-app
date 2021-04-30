@@ -7,7 +7,6 @@ function Registro() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordVerify, setPasswordVerify] = useState("");
-    const [imagePreview, setImagePreview] = useState("");
     const [base64, setBase64] = useState("");
     //definimos los datos que serán capturados para ser enviados al back.
 
@@ -27,7 +26,6 @@ function Registro() {
             }
             else {
                 reader.onloadend = (e) => {
-                    setImagePreview(reader.result);
                     setBase64(btoa(e.target.result));
                 }
                 reader.readAsBinaryString(file)
@@ -63,7 +61,7 @@ function Registro() {
         }
     }
 
-    if (imagePreview) {
+    if (base64) {
         //Creamos una encuesta común.
         return (
             //Añadimos a cada input el valor y hook asociado por onChange.
