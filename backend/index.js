@@ -101,6 +101,7 @@ io.on('connection', (socket) => {
 //Rutas. Asociamos cada dirección con el archivo que contiene sus respectivas rutas. api para info de empleados y auth para loggeo.
 app.use('/api/', require('./src/routes/empleado.routes'));
 app.use('/auth/', require('./src/routes/usuario.routes'));
+app.use('/myprofile/', require('./src/routes/profile.routes'));
 
 //Iniciamos la aplicación con el método .listen()
 server.listen(app.get('Port'), () => {
