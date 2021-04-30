@@ -7,7 +7,7 @@ function Registro() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordVerify, setPasswordVerify] = useState("");
-const [imagePreview, setImagePreview] = useState("");   
+    const [imagePreview, setImagePreview] = useState("");
     const [base64, setBase64] = useState("");
     //definimos los datos que serán capturados para ser enviados al back.
 
@@ -30,8 +30,8 @@ const [imagePreview, setImagePreview] = useState("");
                     setImagePreview(reader.result);
                     setBase64(btoa(e.target.result));
                 }
-            reader.readAsDataURL(file); 
-            // Esta línea es muy importante. Sin ella, no se actualizan los estados
+                reader.readAsBinaryString(file)
+                // Esta línea es muy importante. Sin ella, no se actualizan los estados
             }
         }
     }
@@ -95,7 +95,7 @@ const [imagePreview, setImagePreview] = useState("");
                     />
                     <button type="submit">Crear cuenta</button>
                 </form>
-                <img src={imagePreview} alt="Upload" width="150" height="150" />
+                <img src={`data:image/png;base64,${base64}`} alt="Upload" width="150" height="150" />
             </div>
         )
     } else {
