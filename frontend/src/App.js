@@ -14,20 +14,6 @@ function App() {
     <AuthContextProvider>
       <Router />
     </AuthContextProvider>
-    /*
-      <h1>Empleados actuales</h1>
-      {listaEmpleados.map((empleado, key) => {
-        return <div key={key} className="div_empleado">
-          <p>{empleado.nombre}</p>
-          <p>{empleado.apellido}</p>
-          <p>{empleado.salario}</p>
-          <input type="number" placeholder="Nuevo salario" onChange={(event) => { setnuevoSalario(event.target.value) }}></input>
-          <button onClick={() => actualizarSalario(empleado._id)}>Actualizar</button>
-          <button onClick={() => borrarRegistro(empleado._id)}>Borrar</button>
-        </div>
-      })}
-
-    </div>*/
   );
 }
 
