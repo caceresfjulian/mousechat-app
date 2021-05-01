@@ -14,6 +14,8 @@ function MyProfile() {
     const [edit, setEdit] = useState("");
     //Almacena el NOMBRE de la propiedad a editar, el cual es pasado al componente ventana de edición
     const [newValue, setNewValue] = useState("");
+    const [base64, setBase64] = useState("");
+
 
 
     const closeEdit = (e) => {
@@ -39,9 +41,31 @@ function MyProfile() {
             }
             await axios.post('http://localhost:4000/myprofile', newData);
             obtenerPerfil();
+            setBase64("");
+            alert('Actualizado');
 
         } catch (error) {
             console.log(error);
+        }
+    }
+
+    function photoUpload(file) {
+        const reader = new FileReader();
+        if (reader !== undefined && file !== undefined) {
+            if (file.size > 2097152) {
+                alert('Verifique el archivo e intente de nuevo.');
+            } else if (file.type !== "image/png") {
+                alert('Verifique la extensión del archivo e intente de nuevo.');
+            }
+            else {
+                reader.onloadend = (e) => {
+                    setBase64(btoa(e.target.result));
+                    setEdit('base64');
+                    setNewValue(btoa(e.target.result));
+                }
+                reader.readAsBinaryString(file)
+                // Esta línea es muy importante. Sin ella, no se actualizan los estados
+            }
         }
     }
 
@@ -52,8 +76,15 @@ function MyProfile() {
     if (profile !== "") {
         return (
             <div>
-                <h1>My profile {emailCheck} </h1>
-                <img src={`data:image/png;base64,` + profile.base64} alt="Perfil" width="150" height="150" />
+                <h1>My profile ({emailCheck}) </h1>
+                <img src={ base64 ? `data:image/png;base64,` + base64 : `data:image/png;base64,` + profile.base64} alt="Perfil" width="150" height="150" />
+                <label>Update your profile pic: </label>
+                <input
+                        type="file"
+                        accept=".png"
+                        onChange={(e) => photoUpload(e.target.files[0])}
+                    />
+                    <button style={ base64 ? {display: 'block'} : {display:'none'}} onClick={e => actualizarPerfil(e)}>Update</button>
                 <form style={{ display: overlay ? "block" : "none" }}>
                     <h5>Edit {edit}:</h5>
                     <input type="text" placeholder={`New ${edit}`} onChange={e => setNewValue(e.target.value)} />
