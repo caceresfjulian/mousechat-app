@@ -102,6 +102,7 @@ io.on('connection', (socket) => {
 app.use('/api/', require('./src/routes/empleado.routes'));
 app.use('/auth/', require('./src/routes/usuario.routes'));
 app.use('/myprofile/', require('./src/routes/profile.routes'));
+app.use('/directory/', require('./src/routes/directory.routes'));
 
 //Iniciamos la aplicación con el método .listen()
 server.listen(app.get('Port'), () => {
