@@ -12,8 +12,8 @@ function Navbar({ email }) {
 
     //De esta forma se escribe el condicional para no renderizar algunos elementos de los componentes 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="container">
+        <nav className="navbar navbar-expand-sm navbar-light bg-light">
+            <div>
                 <div className="container-fluid">
                     {loggedIn === false && (
                         <>
@@ -43,7 +43,7 @@ function Navbar({ email }) {
                                     <Link className="nav-link" to="/myProfile">My Profile</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/Customer">Administrar</Link>
+                                    <Link className="nav-link" to="/directory">Directory</Link>
                                 </li>
                                 <LogOutBtn className="btn btn-outline-success" />
                             </ul>
