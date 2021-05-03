@@ -5,6 +5,7 @@ import Registro from './components/auth/Registro';
 import Chat from './components/chat/Chat';
 import AuthContext from './components/context/AuthContext';
 import Customers from './components/customers/Customers';
+import Directory from './components/directory/Directory';
 import Join from './components/join/Join';
 import Navbar from './components/layout/navbar';
 import MyProfile from './components/myProfile/MyProfile';
@@ -25,7 +26,7 @@ function Router() {
                     <Route exact path="/join" component={Join} />
                     <Route path="/chat" component={Chat} />
                     <Route path="/myProfile" component={MyProfile}/>
-                    <Route path="/customer" component={Customers}/>
+                    <Route path="/directory" component={Directory}/>
                     <Route path="*" component={Join}/>
                 </Switch>
             </BrowserRouter>)
