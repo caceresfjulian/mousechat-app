@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react'
 import AuthContext from '../context/AuthContext'
 import axios from 'axios'
+import moment from 'moment'
 
 // La información debe ser solicitada al backend.
 
 function MyProfile() {
-    
+
     const { emailCheck } = useContext(AuthContext);
 
     const [profile, setProfile] = useState("");
@@ -77,14 +78,15 @@ function MyProfile() {
         return (
             <div>
                 <h1>My profile ({emailCheck}) </h1>
-                <img src={ base64 ? `data:image/png;base64,` + base64 : `data:image/png;base64,` + profile.base64} alt="Perfil" width="150" height="150" />
+                <p>{`Created: ` + moment(profile.created).format('MM/DD/YYYY')}</p>
+                <img src={base64 ? `data:image/png;base64,` + base64 : `data:image/png;base64,` + profile.base64} alt="Perfil" width="150" height="150" />
                 <label>Update your profile pic: </label>
                 <input
-                        type="file"
-                        accept=".png"
-                        onChange={(e) => photoUpload(e.target.files[0])}
-                    />
-                    <button style={ base64 ? {display: 'block'} : {display:'none'}} onClick={e => actualizarPerfil(e)}>Update</button>
+                    type="file"
+                    accept=".png"
+                    onChange={(e) => photoUpload(e.target.files[0])}
+                />
+                <button style={base64 ? { display: 'block' } : { display: 'none' }} onClick={e => actualizarPerfil(e)}>Update</button>
                 <form style={{ display: overlay ? "block" : "none" }}>
                     <h5>Edit {edit}:</h5>
                     <input type="text" placeholder={`New ${edit}`} onChange={e => setNewValue(e.target.value)} />
