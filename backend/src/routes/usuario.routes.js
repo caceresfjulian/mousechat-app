@@ -61,11 +61,16 @@ router.post('/', async (req, res) => {
         //Se crea algo llamado 'salt'. No sé para qué sirve, pero se necesita.
         const passwordHash = await bcrypt.hash(password, salt);
         //Aquí se almacena en una constante la contraseña encriptada gracias al método .hash. 
-        
+
+        const last_connection = new Date;
+
+        const created = last_connection;
+        // Generar fecha de conexión
+
         //Guardar usuario y contraseña encriptada en la base de datos.
 
         const nuevoUsuario = new User({
-            email, passwordHash, base64, username:email, bio:"", country:""
+            email, passwordHash, base64, username: email, bio: "", country: "", last_connection, created
             //Solo se pone email y passwordHash, ya que ellos han sido previamente definidos.
         })
 
@@ -148,6 +153,11 @@ router.post('/login', async (req, res) => {
             email: usuarioExistente.email
         }, process.env.JWT_SECRET);
         //Consiguiendo el token del usuario existente.
+
+        // Actualizar última conexión
+        const time = new Date;
+        usuarioExistente.last_connection = time;
+        await usuarioExistente.save();
 
         //Enviar el token en una HttpOnly cookie.
         res.cookie('token', token, {
