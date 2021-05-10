@@ -21,7 +21,7 @@ const morgan = require('morgan');
 //Es para recibir mensajes por consola de cada http req recibido en el back
 const cors = require('cors');
 //Permite administar las solicitudes http. En este caso, todas son permitidas.
-require('dotenv').config({ path: 'C:/full stack/backend/.env' });
+require('dotenv').config({ path: './.env' });
 
 //Tuvimos que instalar dotenv porque estaba teniendo problemas al acceder a las variables de entorno
 //npm init dotenv para después definir una ruta directa al archivo y almacenar la respuesta en una constante de formato JSON
