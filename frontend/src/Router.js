@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import About from './components/about/About';
 import Login from './components/auth/Login';
 import Registro from './components/auth/Registro';
 import Chat from './components/chat/Chat';
@@ -38,7 +39,8 @@ function Router() {
                 <Route exact path="/" component={Home}/>
                 <Route path="/register" component={Registro} />
                 <Route path="/Login" component={Login} />
-                <Route path="*" component={Registro} />
+                <Route path="/about" component={About} />
+                <Route path="*" component={Home} />
             </Switch>
         </BrowserRouter>
         )
