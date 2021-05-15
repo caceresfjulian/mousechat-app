@@ -147,22 +147,21 @@ function Registro() {
                             placeholder="Email address"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, marginBottom: 20, marginTop: 40 }}
+                            style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, paddingLeft: 15, marginBottom: 20, marginTop: 40 }}
                         />
                         <input
                             type="password"
                             placeholder="Password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, marginBottom: 20 }}
-
+                            style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, paddingLeft: 15, marginBottom: 20 }}
                         />
                         <input
                             type="password"
                             placeholder="Verify your password"
                             value={passwordVerify}
                             onChange={(e) => setPasswordVerify(e.target.value)}
-                            style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, marginBottom: 20 }}
+                            style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, paddingLeft: 15, marginBottom: 20 }}
                         />
                         <button className="nav-button" type="submit">Register</button>
                         <p style={{ textAlign: 'center', marginTop: 30 }}>Don’t want to create an account? <br />
