@@ -1,0 +1,26 @@
+.navbar {
+    display: flex;
+    padding: 0 5%;
+    justify-content: space-between;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    padding-top: 6px;
+}
+
+li {
+    text-decoration: none;
+}
+
+.nav-button {
+    color: #000;
+    background: linear-gradient(180deg, #FFFFFF 0%, #717171 100%);
+    border-radius: 10px;
+    padding: 6px 35px;
+    color:#000;
+    cursor: pointer;
+}

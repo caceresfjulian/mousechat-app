@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import queryString from 'query-string'
 import io from 'socket.io-client'
-import './Chat.css';
-import Infobar from '../infobar/Infobar';
-import Input from '../Input/Input';
-import Messages from '../messages/Messages';
-import TextContainer from '../textContainer/TextContainer';
+import './Chat.css'
+import Infobar from '../infobar/Infobar'
+import Input from '../Input/Input'
+import Messages from '../messages/Messages'
+import TextContainer from '../textContainer/TextContainer'
 
 
 let socket;
