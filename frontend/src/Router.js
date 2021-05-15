@@ -4,8 +4,8 @@ import Login from './components/auth/Login';
 import Registro from './components/auth/Registro';
 import Chat from './components/chat/Chat';
 import AuthContext from './components/context/AuthContext';
-import Customers from './components/customers/Customers';
 import Directory from './components/directory/Directory';
+import Home from './components/home/Home';
 import Join from './components/join/Join';
 import Navbar from './components/layout/navbar';
 import MyProfile from './components/myProfile/MyProfile';
@@ -15,7 +15,7 @@ import MyProfile from './components/myProfile/MyProfile';
 function Router() {
 
     const { loggedIn, emailCheck } = useContext(AuthContext);
-    
+
 
     //Modifiqué este tipo de lógica para evitar la advertencia: <Route> elements should not change from controlled to uncontrolled "
     if (loggedIn === true) {
@@ -25,9 +25,9 @@ function Router() {
                 <Switch>
                     <Route exact path="/join" component={Join} />
                     <Route path="/chat" component={Chat} />
-                    <Route path="/myProfile" component={MyProfile}/>
-                    <Route path="/directory" component={Directory}/>
-                    <Route path="*" component={Join}/>
+                    <Route path="/myProfile" component={MyProfile} />
+                    <Route path="/directory" component={Directory} />
+                    <Route path="*" component={Join} />
                 </Switch>
             </BrowserRouter>)
     }
@@ -35,16 +35,14 @@ function Router() {
         return (<BrowserRouter>
             <Navbar />
             <Switch>
-                <Route exact path="/">
-                    <h1>Home</h1>
-                </Route>
+                <Route exact path="/" component={Home}/>
                 <Route path="/register" component={Registro} />
-                <Route path="/Login" component={Login}/>
-                <Route path="*" component={Registro}/>
+                <Route path="/Login" component={Login} />
+                <Route path="*" component={Registro} />
             </Switch>
         </BrowserRouter>
         )
-    } 
+    }
 }
 
 export default Router;
