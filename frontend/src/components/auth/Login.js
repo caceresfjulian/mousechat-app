@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import AuthContext from '../context/AuthContext';
 import { useHistory } from 'react-router';
@@ -35,6 +36,10 @@ function Login() {
         }
     }
 
+    const dummyAccount = () => {
+        setEmail('test@gmail.com');
+        setPassword('password');
+    }
 
     //Creamos una encuesta común.
     return (
@@ -73,8 +78,8 @@ function Login() {
                         <path d="M319.41 79.7768H317.922V305.378H319.41V79.7768Z" fill="#CCCCCC" />
                     </svg>
                     <p style={{ textAlign: 'center', marginTop: 30 }}>Don’t want to create an account? <br />
-                        <a href="/" style={{ color: '#FF0000' }}>Login</a> with our dummy profile
-                        </p>
+                        <span style={{ color: '#FF0000', display: 'inline', cursor: 'pointer' }}
+                            onClick={() => dummyAccount()}>Login</span> with our dummy profile </p> 
                     <form onSubmit={loggeo} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <input
                             type="email"
@@ -92,7 +97,7 @@ function Login() {
                         />
                         <button type="submit" className="nav-button">Log in</button>
                         <p style={{ textAlign: 'center', marginTop: 30 }}>
-                           Or <a href="/" style={{ color: '#FF0000' }}>create</a> an account!
+                            Or <Link to="/register" style={{ color: '#FF0000' }}>create</Link> an account!
                         </p>
                     </form>
                 </div>
