@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import AuthContext from '../context/AuthContext';
 import { useHistory } from 'react-router';
@@ -280,7 +281,7 @@ function Registro() {
                         />
                         <button className="nav-button" type="submit">Register</button>
                         <p style={{ textAlign: 'center', marginTop: 30 }}>Don’t want to create an account? <br />
-                            <a href="/" style={{ color: '#FF0000' }}>Login</a> with our dummy profile
+                            <Link to="/login" style={{ color: '#FF0000' }}>Login</Link> with our dummy profile
                         </p>
                     </form>
                 </div>

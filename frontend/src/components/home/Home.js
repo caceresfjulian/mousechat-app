@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import profile from './profile.jpeg';
 import mern from './MERN-logo.png';
 import figma from './figma_logo.png';
@@ -19,8 +20,8 @@ function Home() {
                                     <p style={{ color: '#828282', margin: 0, padding: '5px 0 0 0' }}>Web dev, journalist</p>
                                 </div>
                             </div>
-                            <a className="nav-button" href="/Login">Start Chatting</a>
-                            <a style={{ fontSize: '0.8em', display: 'block', marginTop: 20 }} href="/">+About this project</a>
+                            <Link className="nav-button" to="/login">Start Chatting</Link>
+                            <Link style={{ fontSize: '0.8em', display: 'block', marginTop: 20 }} to="/about">+About this project</Link>
                         </div>
                     </div>
                     <div>
