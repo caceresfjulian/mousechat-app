@@ -12,7 +12,7 @@ function Home() {
                 <div className="main-screen">
                     <div style={{ margin: '50px 60px 0 0' }}>
                         <div style={{ width: '300px' }}>
-                            <h1 style={{ fontWeight: 1 }}>“If you’re looking for a front end web dev, check me out!”</h1>
+                            <h1 style={{ fontWeight: 1 }}>“If you’re looking for a web dev, check me out!”</h1>
                             <div style={{ display: 'flex', marginTop: 30, marginBottom: 50 }}>
                                 <img src={profile} alt="Dev" style={{ width: 60, height: 60, objectFit: 'cover', borderRadius: "50%" }} />
                                 <div style={{ marginLeft: 25 }}>
