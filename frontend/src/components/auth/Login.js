@@ -83,14 +83,14 @@ function Login() {
                     <form onSubmit={loggeo} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <input
                             type="email"
-                            placeholder="Correo electrónico"
+                            placeholder="Email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, paddingLeft: 15, marginBottom: 20 }}
                         />
                         <input
                             type="password"
-                            placeholder="Contraseña"
+                            placeholder="Password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, paddingLeft: 15, marginBottom: 20 }}
