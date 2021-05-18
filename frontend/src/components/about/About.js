@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import swal from 'sweetalert';
 import emailjs from 'emailjs-com';
 import profile from '../home/profile.jpeg';
 import './About.css';
@@ -13,18 +14,19 @@ function About() {
     // funcion para enviar el correo usando emailjs directamente desde el front-end
     const sendEmail = (e) => {
         e.preventDefault();
-        emailjs.sendForm('service_63lr68f',
+
+        name.trim().length < 5 || subject.trim().length < 5 || message.trim().length < 5 ? swal('Error', 'Fill the form before sending it.', 'error') : emailjs.sendForm('service_63lr68f',
             process.env.REACT_APP_EMAIL_TEMPLATE_ID,
             e.target,
             process.env.REACT_APP_EMAIL_USER_ID)
             .then(result => {
-                alert('Message sent, I\'ll get back to you shortly', result.text);
+                swal('Message sent', 'I\'ll get back to you shortly', 'success');
                 setname("");
                 setsubject("");
                 setmessage("");
             },
                 error => {
-                    alert('An error ocurred. Please try again', error.text)
+                    swal('Error', 'Please try again', 'error')
                 })
     }
 
@@ -142,6 +144,8 @@ function About() {
                                 placeholder="Your name"
                                 name="name"
                                 value={name}
+                                minLength="8"
+                                maxLength="30"
                                 onChange={e => setname(e.target.value)}
                                 style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 180, padding: 5, paddingLeft: 15, marginBottom: 20, display: 'inline', marginRight: 50 }}
                             />
@@ -149,6 +153,7 @@ function About() {
                                 type="text"
                                 placeholder="Subject"
                                 name="subject"
+                                maxLength="30"
                                 value={subject}
                                 onChange={e => setsubject(e.target.value)}
                                 style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 180, padding: 5, paddingLeft: 15, marginBottom: 20, display: 'inline' }}
@@ -158,7 +163,9 @@ function About() {
                             type="textarea"
                             placeholder="Your message..."
                             name="message"
+                            maxLength="300"
                             value={message}
+                            minLength=""
                             onChange={e => setmessage(e.target.value)}
                             style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 420, padding: 5, paddingLeft: 15, marginBottom: 20, display: 'inline' }}
                             rows="3"
