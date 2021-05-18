@@ -1,8 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import AuthContext from '../context/AuthContext';
 import { useHistory } from 'react-router';
+import axios from 'axios';
+import swal from 'sweetalert';
+import AuthContext from '../context/AuthContext';
+
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -15,24 +17,27 @@ function Login() {
     //Definimos una función ASÍNCRONA para el onSubmit del form
     async function loggeo(e) {
         e.preventDefault();
+        if (email.trim().length < 8 || password.length < 8) {
+            swal('Error', 'Fill the form and try again.', 'error');
+        } else {
+            // Escribimos un try catch para enviar la solicitud al backend, almacenar la info en una const.
+            // Aquí podríamos usar fetch para enviar la info, pero es preferible axios por su simpleza.
+            try {
+                const datosLogin = {
+                    email,
+                    password
+                };
 
-        // Escribimos un try catch para enviar la solicitud al backend, almacenar la info en una const.
-        // Aquí podríamos usar fetch para enviar la info, pero es preferible axios por su simpleza.
-        try {
-            const datosLogin = {
-                email,
-                password
-            };
+                await axios.post("http://localhost:4000/auth/login", datosLogin);
+                //Hay que habilitar el uso de cookies, entonces en app.js añadimos withcredentials.
 
-            await axios.post("http://localhost:4000/auth/login", datosLogin);
-            //Hay que habilitar el uso de cookies, entonces en app.js añadimos withcredentials.
+                await obtenerLoggeo();
+                historial.push("/join");
+                //Añadimos de nuevo esto para actualizar el contexto y redireccionar.
 
-            await obtenerLoggeo();
-            historial.push("/join");
-            //Añadimos de nuevo esto para actualizar el contexto y redireccionar.
-
-        } catch (error) {
-            console.error(error);
+            } catch (error) {
+                swal('Error', 'Check the provided information', 'error');
+            }
         }
     }
 
@@ -79,7 +84,7 @@ function Login() {
                     </svg>
                     <p style={{ textAlign: 'center', marginTop: 30 }}>Don’t want to create an account? <br />
                         <span style={{ color: '#FF0000', display: 'inline', cursor: 'pointer' }}
-                            onClick={() => dummyAccount()}>Login</span> with our dummy profile </p> 
+                            onClick={() => dummyAccount()}>Login</span> with our dummy profile </p>
                     <form onSubmit={loggeo} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <input
                             type="email"
@@ -96,7 +101,7 @@ function Login() {
                             style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, paddingLeft: 15, marginBottom: 20 }}
                         />
                         <button type="submit" className="nav-button">Log in</button>
-                        <p style={{ textAlign: 'center', marginTop: 30 }}>
+                        <p style={{ textAlign: 'center', marginTop: 10 }}>
                             Or <Link to="/register" style={{ color: '#FF0000' }}>create</Link> an account!
                         </p>
                     </form>
