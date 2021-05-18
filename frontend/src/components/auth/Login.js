@@ -90,6 +90,7 @@ function Login() {
                             type="email"
                             placeholder="Email"
                             value={email}
+                            maxLength="30"
                             onChange={(e) => setEmail(e.target.value)}
                             style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, paddingLeft: 15, marginBottom: 20 }}
                         />
@@ -97,6 +98,7 @@ function Login() {
                             type="password"
                             placeholder="Password"
                             value={password}
+                            maxLength="30"
                             onChange={(e) => setPassword(e.target.value)}
                             style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, paddingLeft: 15, marginBottom: 20 }}
                         />

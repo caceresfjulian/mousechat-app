@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import AuthContext from '../context/AuthContext';
 import { useHistory } from 'react-router';
+import swal from 'sweetalert';
 
 function Registro() {
     const [email, setEmail] = useState("");
@@ -41,24 +42,25 @@ function Registro() {
     async function registrar(e) {
         e.preventDefault();
 
-        // Escribimos un try catch para enviar la solicitud al backend, almacenar la info en una const.
-        // Aquí podríamos usar fetch para enviar la info, pero es preferible axios por su simpleza.
-        try {
-            const datosRegistrados = {
-                email,
-                password,
-                passwordVerify,
-                base64
-            };
-
-            await axios.post("http://localhost:4000/auth", datosRegistrados);
-            //Hay que habilitar el uso de cookies, entonces en app.js añadimos withcredentials.
-            await obtenerLoggeo();
-            historial.push("/");
-
-
-        } catch (error) {
-            console.error(error);
+        if (email.trim().length < 8 || password.length < 8 || passwordVerify !== password || (!base64)) {
+            swal('Error', 'Check the provided information.', 'error')
+        } else {
+            // Escribimos un try catch para enviar la solicitud al backend, almacenar la info en una const.
+            // Aquí podríamos usar fetch para enviar la info, pero es preferible axios por su simpleza.
+            try {
+                const datosRegistrados = {
+                    email,
+                    password,
+                    passwordVerify,
+                    base64
+                };
+                await axios.post("http://localhost:4000/auth", datosRegistrados);
+                //Hay que habilitar el uso de cookies, entonces en app.js añadimos withcredentials.
+                await obtenerLoggeo();
+                historial.push("/");
+            } catch (error) {
+                swal('Error', 'Try again.', 'error');
+            }
         }
     }
 
@@ -147,6 +149,7 @@ function Registro() {
                             type="email"
                             placeholder="Email address"
                             value={email}
+                            maxLength="30"
                             onChange={(e) => setEmail(e.target.value)}
                             style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, paddingLeft: 15, marginBottom: 20, marginTop: 40 }}
                         />
@@ -154,12 +157,14 @@ function Registro() {
                             type="password"
                             placeholder="Password"
                             value={password}
+                            maxLength="30"
                             onChange={(e) => setPassword(e.target.value)}
                             style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, paddingLeft: 15, marginBottom: 20 }}
                         />
                         <input
                             type="password"
                             placeholder="Verify your password"
+                            maxLength="30"
                             value={passwordVerify}
                             onChange={(e) => setPasswordVerify(e.target.value)}
                             style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, paddingLeft: 15, marginBottom: 20 }}
@@ -261,12 +266,14 @@ function Registro() {
                             type="email"
                             placeholder="Email address"
                             value={email}
+                            maxLength="30"
                             onChange={(e) => setEmail(e.target.value)}
                             style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, paddingLeft: 15, marginBottom: 20, marginTop: 40 }}
                         />
                         <input
                             type="password"
                             placeholder="Password"
+                            maxLength="30"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, paddingLeft: 15, marginBottom: 20 }}
@@ -275,6 +282,7 @@ function Registro() {
                         <input
                             type="password"
                             placeholder="Verify your password"
+                            maxLength="30"
                             value={passwordVerify}
                             onChange={(e) => setPasswordVerify(e.target.value)}
                             style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, paddingLeft: 15, marginBottom: 20 }}
