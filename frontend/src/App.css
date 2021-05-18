@@ -31,7 +31,7 @@ input[type="file"] {
   display: none;
 }
 
-input::placeholder {
-  color: #A9A9A9;
+input::placeholder, textarea, textarea::placeholder, input[type='text'], input[type='email'], input[type='password'] {
+  color: #1b1b1b;
   font-family: 'Reem Kufi', sans-serif;
 }
