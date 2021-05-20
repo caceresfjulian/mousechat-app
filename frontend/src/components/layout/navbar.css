@@ -1,7 +1,9 @@
 .navbar {
+    min-height: 62px;
     display: flex;
-    padding: 0 5%;
+    padding: 20px 10px;
     justify-content: space-between;
+    align-items: flex-start;
 }
 
 ul {
@@ -9,8 +11,8 @@ ul {
     display: flex;
     justify-content: space-between;
     width: 50%;
-    padding-top: 6px;
-}
+    margin: 0;
+}   
 
 li {
     text-decoration: none;
@@ -20,7 +22,38 @@ li {
     color: #000;
     background: linear-gradient(180deg, #FFFFFF 0%, #717171 100%);
     border-radius: 10px;
-    padding: 6px 35px;
-    color:#000;
+    padding: 0.5rem 1.5rem;
+    color: #000;
     cursor: pointer;
+}
+
+#menu-icon {
+    display: none
+}
+
+@media screen and (max-width: 600px) {
+    .navbar li {
+        display: none
+    }
+    .navbar ul {
+        width: unset
+    }
+    #menu-icon {
+        display: block;
+    }
+    .responsive-navbar {
+        top: 20px;
+        right: 10px;
+        position: absolute;
+        display: block;
+    }
+    .responsive-navbar #menu-icon {
+        position: absolute;
+        top: 0; 
+        right: 0;
+    }
+    .responsive-navbar li {
+        display: block;
+        padding-top: 15px;
+    }
 }

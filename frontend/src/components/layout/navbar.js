@@ -1,12 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import LogOutBtn from '../auth/LogOutBtn';
 import AuthContext from '../context/AuthContext';
 import './navbar.css';
+import { Icon, InlineIcon } from '@iconify/react';
+import menuIcon from '@iconify/icons-heroicons-outline/menu';
 
 //Se crea una barra de navegación con el paquete npm i react-router-dom y su componente Link.
 
-function Navbar({ email }) {
+function Navbar({ email, isOpen, toggle }) {
 
     const { loggedIn } = useContext(AuthContext);
     //Para utilizar el contexto, debemos importar useContext y haber exportado el contexto original.
@@ -14,7 +16,7 @@ function Navbar({ email }) {
     //De esta forma se escribe el condicional para no renderizar algunos elementos de los componentes 
     return (
         <nav className="navbar">
-            <svg width="250" height="80" viewBox="0 0 327 59" fill="none">
+            <svg width="200" viewBox="0 0 327 59" fill="none">
                 <g clipPath="url(#clip0)">
                     <path d="M24.84 53.76H0V58.16H24.84V53.76Z" fill="white" />
                     <path d="M12.87 0C20.5613 0 27.9375 3.05535 33.3761 8.4939C38.8146 13.9325 41.87 21.3087 41.87 29C41.87 36.6913 38.8146 44.0675 33.3761 49.5061C27.9375 54.9446 20.5613 58 12.87 58" fill="#FF0000" />
@@ -39,7 +41,7 @@ function Navbar({ email }) {
             </svg>
             {loggedIn === false && (
                 <>
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul className={isOpen ? "responsive-navbar" : "" }> 
                         <li>
                             <Link to="/">Home</Link>
                         </li>
@@ -52,6 +54,12 @@ function Navbar({ email }) {
                         <li>
                             <Link className="nav-button" to="/register">Sign up</Link>
                         </li>
+                        <Icon
+                            icon={menuIcon}
+                            style={{ color: '#fff', fontSize: '1.5rem', cursor: 'pointer' }}
+                            id="menu-icon"
+                            onClick={toggle}
+                        />
                     </ul>
                 </>
             )}
