@@ -10,10 +10,10 @@ function Home() {
         <>
             <div className="container">
                 <div className="main-screen">
-                    <div style={{ margin: '50px 60px 0 0' }}>
-                        <div style={{ width: '300px' }}>
-                            <h1 style={{ fontWeight: 1 }}>“If you’re looking for a web dev, check me out!”</h1>
-                            <div style={{ display: 'flex', marginTop: 30, marginBottom: 50 }}>
+                    <div style={{ margin: '0 3% 0 0', flex: 2 }}>
+                        <div>
+                            <h1 style={{ fontWeight: 1, margin: 0 }}>“If you’re looking for a web dev, check me out!”</h1>
+                            <div style={{ display: 'flex', marginTop: '10%', marginBottom: '18%' }}>
                                 <img src={profile} alt="Dev" style={{ width: 60, height: 60, objectFit: 'cover', borderRadius: "50%" }} />
                                 <div style={{ marginLeft: 25 }}>
                                     <p style={{ margin: 0, padding: 0 }}>Julian Caceres Florez</p>
@@ -24,8 +24,8 @@ function Home() {
                             <Link style={{ fontSize: '0.8em', display: 'block', marginTop: 20 }} to="/about">+About this project</Link>
                         </div>
                     </div>
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="500" height="511" viewBox="0 0 737 511" fill="none">
+                    <div style={{ flex: 3, display: 'flex', flexDirection: 'column' }}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 737 511" fill="none">
                             <g>
                                 <path d="M544.651 510.845C562.542 510.845 577.046 509.35 577.046 507.507C577.046 505.663 562.542 504.169 544.651 504.169C526.76 504.169 512.257 505.663 512.257 507.507C512.257 509.35 526.76 510.845 544.651 510.845Z" fill="#268200"></path>
                                 <path d="M640.515 510.845C658.406 510.845 672.91 509.35 672.91 507.507C672.91 505.663 658.406 504.169 640.515 504.169C622.624 504.169 608.12 505.663 608.12 507.507C608.12 509.35 622.624 510.845 640.515 510.845Z" fill="#268200"></path>
@@ -61,19 +61,19 @@ function Home() {
                                 </clipPath>
                             </defs>
                         </svg>
-                        <div style={{ textAlign: 'right', marginTop: -70 }}>
+                        <div style={{ textAlign: 'right'}}>
                             <p>Send, receive messages, edit your profile and more!</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div style={{ position: 'absolute', bottom: 0, width: '100%', margin: 0 }}>
+            <div style={{ position: 'absolute', bottom: 0, margin: 0 }}>
                 <svg style={{ position: 'absolute', bottom: 0, zIndex: -1 }} width="80%" viewBox="0 0 1321 214" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M530.902 71.6281C308.233 68.5331 311.236 0 0 0V214H1321C1242.77 192.482 1080.82 136.182 928.703 136.182C738.559 136.182 753.57 74.7231 530.902 71.6281Z" fill="white" />
                 </svg>
-                <img src={mern} alt="MERN stack. MongoDB, ExpressJS, ReactJS, NodeJS" width="18%" style={{ margin: '0 0 20px 20px' }} />
-                <img src={figma} alt="Figma" width="10%" style={{ marginLeft: 40 }} />
-                <img src={socket} alt="Socket.io" width="10%" style={{ marginLeft: 20 }} />
+                <img src={mern} alt="MERN stack. MongoDB, ExpressJS, ReactJS, NodeJS" width="18%" style={{ margin: '0 0 2% 2%' }} />
+                <img src={figma} alt="Figma" width="10%" style={{ marginLeft: '2%' }} />
+                <img src={socket} alt="Socket.io" width="10%" />
             </div>
         </>
 
