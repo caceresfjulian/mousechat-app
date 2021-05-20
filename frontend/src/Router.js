@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import About from './components/about/About';
 import Login from './components/auth/Login';
@@ -17,12 +17,13 @@ function Router() {
 
     const { loggedIn, emailCheck } = useContext(AuthContext);
 
+    const [isOpen, setOpen] = useState(false);
 
     //Modifiqué este tipo de lógica para evitar la advertencia: <Route> elements should not change from controlled to uncontrolled "
     if (loggedIn === true) {
         return (
             <BrowserRouter>
-                <Navbar email={emailCheck} />
+                <Navbar email={emailCheck} isOpen={isOpen} toggle={() => setOpen(!isOpen)}/>
                 <Switch>
                     <Route exact path="/join" component={Join} />
                     <Route path="/chat" component={Chat} />
@@ -34,7 +35,7 @@ function Router() {
     }
     else {
         return (<BrowserRouter>
-            <Navbar />
+            <Navbar isOpen={isOpen} toggle={() => setOpen(!isOpen)}/>
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route path="/register" component={Registro} />
