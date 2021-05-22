@@ -1,9 +1,14 @@
 .navbar {
     min-height: 62px;
+    width: 100%;
     display: flex;
-    padding: 20px 10px;
+    padding: 0px 20px;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #121212;
 }
 
 ul {
@@ -12,6 +17,7 @@ ul {
     justify-content: space-between;
     width: 50%;
     margin: 0;
+    
 }   
 
 li {

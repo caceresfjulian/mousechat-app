@@ -41,7 +41,7 @@ function Navbar({ email, isOpen, toggle }) {
             </svg>
             {loggedIn === false && (
                 <>
-                    <ul className={isOpen ? "responsive-navbar" : "" }> 
+                    <ul className={isOpen ? "responsive-navbar" : ""}>
                         <li>
                             <Link to="/">Home</Link>
                         </li>
