@@ -52,12 +52,12 @@ function Home() {
                         <p>MouseChat was developed in 2021 as part of my MERN web dev portfolio,  using several tools as Figma for the UI, Socket.io for the connection between users, Abode Illustrator and Adobe Photoshop for the visual identity, besides Javascript as the main coding language. </p>
                     </div>
                     <div id="tech-center">
-                        <figure style={{ backgroundColor: '#BC1414', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px', borderRadius: '20px', flexDirection: 'column' }}>
+                        <div style={{ backgroundColor: '#BC1414', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '18px', borderRadius: '20px', flexDirection: 'column', boxShadow: '5px 6px 10px 0px rgba(0,0,0,0.8)', margin: '15px '}}>
                             <img src={profile} style={{ borderRadius: '50%', border: '5px solid #fff' }} alt="profile" width="70%" />
-                            <figurecaption style={{ backgroundColor: '#FFFFFF', padding: '0 8px', marginTop: '10px', minWidth: '150px', borderRadius: 15 }}>
+                            <div style={{ backgroundColor: '#FFFFFF', padding: '0 8px', marginTop: '10px', minWidth: '150px', borderRadius: 15 }}>
                                 <p style={{ margin: '5px 0', textAlign: 'center' }}>Julian Caceres Florez <br /><span style={{ color: '#565656' }}> Web dev, journalist </span></p>
-                            </figurecaption>
-                        </figure>
+                            </div>
+                        </div>
                     </div>
                     <div id="tech-right">
                     <h2 style={{fontWeight: 1   }}>Technologies</h2>
