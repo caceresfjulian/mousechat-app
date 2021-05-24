@@ -15,31 +15,36 @@ function FormImg({ registrar, base64, photoUpload, email, setEmail, password, se
                     />
                 </label>
                 <p style={{ fontSize: '0.8em', display: 'block', marginTop: 20 }}>Upload a profile pic</p>
-                <input
-                    type="email"
-                    placeholder="Email address"
-                    value={email}
-                    maxLength="30"
-                    onChange={(e) => setEmail(e.target.value)}
-                    style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, paddingLeft: 15, marginBottom: 20, marginTop: 40 }}
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    maxLength="30"
-                    onChange={(e) => setPassword(e.target.value)}
-                    style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, paddingLeft: 15, marginBottom: 20 }}
-                />
-                <input
-                    type="password"
-                    placeholder="Verify your password"
-                    maxLength="30"
-                    value={passwordVerify}
-                    onChange={(e) => setPasswordVerify(e.target.value)}
-                    style={{ background: '#FFFFFF', border: '5px solid #AFAFAF', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, paddingLeft: 15, marginBottom: 20 }}
-                />
-                <button className="nav-button" type="submit">Register</button>
+                <div className="form-background">
+                    <input
+                        className="register-input"
+                        type="email"
+                        placeholder="Email address"
+                        value={email}
+                        maxLength="30"
+                        onChange={(e) => setEmail(e.target.value)}
+                        style={{ marginTop: 40 }}
+                    />
+                    <input
+                        className="register-input"
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        maxLength="30"
+                        onChange={(e) => setPassword(e.target.value)}
+                        style={{ marginBottom: 20 }}
+                    />
+                    <input
+                        className="register-input"
+                        type="password"
+                        placeholder="Verify your password"
+                        maxLength="30"
+                        value={passwordVerify}
+                        onChange={(e) => setPasswordVerify(e.target.value)}
+                        style={{ marginBottom: 20 }}
+                    />
+                    <button className="register-button" type="submit">Register</button>
+                </div>
                 <p style={{ textAlign: 'center', marginTop: 30 }}>Don’t want to create an account? <br />
                     <Link to="/login" style={{ color: '#FF0000' }}>Login</Link> with our dummy profile
                         </p>

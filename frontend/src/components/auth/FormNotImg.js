@@ -17,33 +17,36 @@ function Form_not_base64({ registrar, photoUpload, email, setEmail, password, se
                         <path d="M35.5 0.0455322L18.2653 15.581L22.1875 19.1165L32.7265 9.61653V48.581H38.2734V9.61653L48.8124 19.1165L52.7346 15.581L35.5 0.0455322Z" fill="white" />
                     </svg>
                 </label>
-                <p style={{ fontSize: '0.8em', display: 'block', marginTop: 20 }}>Upload a profile pic</p>
+                <p style={{ fontSize: '0.8em', marginTop: 20 }}>Upload a profile pic</p>
                 <div className="form-background">
                     <input
+                        className="register-input"
                         type="email"
                         placeholder="Email address"
                         value={email}
                         maxLength="30"
                         onChange={(e) => setEmail(e.target.value)}
-                        style={{ background: 'none', border: '4px solid #ffffff', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, paddingLeft: 15, marginBottom: 20, marginTop: 40 }}
+                        style={{ marginTop: 40 }}
                     />
 
                     <input
+                        className="register-input"
                         type="password"
                         placeholder="Password"
                         maxLength="30"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        style={{  background: 'none', border: '4px solid #ffffff', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, paddingLeft: 15, marginBottom: 20 }}
+                        style={{ marginBottom: 20 }}
 
                     />
                     <input
+                        className="register-input"
                         type="password"
                         placeholder="Verify your password"
                         maxLength="30"
                         value={passwordVerify}
                         onChange={(e) => setPasswordVerify(e.target.value)}
-                        style={{  background: 'none', border: '4px solid #ffffff', boxSizing: 'border-box', borderRadius: 30, width: 300, padding: 5, paddingLeft: 15, marginBottom: 20 }}
+                        style={{  marginBottom: 20 }}
                     />
                     <button className="register-button" type="submit">Register</button>
                 </div>
