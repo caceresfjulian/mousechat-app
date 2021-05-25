@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import LogOutBtn from '../auth/LogOutBtn';
 import AuthContext from '../context/AuthContext';
 import './navbar.css';
-import { Icon, InlineIcon } from '@iconify/react';
+import { Icon } from '@iconify/react';
 import menuIcon from '@iconify/icons-heroicons-outline/menu';
 
 //Se crea una barra de navegación con el paquete npm i react-router-dom y su componente Link.
@@ -43,16 +43,16 @@ function Navbar({ email, isOpen, toggle }) {
                 <>
                     <ul className={isOpen ? "responsive-navbar" : ""}>
                         <li>
-                            <Link to="/">Home</Link>
+                            <Link to="/" onClick={toggle}>Home</Link>
                         </li>
                         <li>
-                            <Link to="/about">About</Link>
+                            <Link to="/about" onClick={toggle}>About</Link>
                         </li>
                         <li>
-                            <Link to="/Login">Log in</Link>
+                            <Link to="/Login" onClick={toggle}>Log in</Link>
                         </li>
                         <li>
-                            <Link className="nav-button" to="/register">Sign up</Link>
+                            <Link className="navigation-button" to="/register" onClick={toggle}>Sign up</Link>
                         </li>
                         <Icon
                             icon={menuIcon}
@@ -65,17 +65,17 @@ function Navbar({ email, isOpen, toggle }) {
             )}
             {loggedIn === true && (
                 <>
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <a className="navbar brand" href="/">
+                    <ul>
+                        <a href="/">
                             {email}
                         </a>
-                        <li className="nav-item">
+                        <li>
                             <Link className="nav-link" to="/join">Unirse a Chat</Link>
                         </li>
-                        <li className="nav-item">
+                        <li>
                             <Link className="nav-link" to="/myProfile">My Profile</Link>
                         </li>
-                        <li className="nav-item">
+                        <li >
                             <Link className="nav-link" to="/directory">Directory</Link>
                         </li>
                         <LogOutBtn className="btn btn-outline-success" />
