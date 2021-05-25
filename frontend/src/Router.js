@@ -15,7 +15,7 @@ import MyProfile from './components/myProfile/MyProfile';
 
 function Router() {
 
-    const { loggedIn, emailCheck } = useContext(AuthContext);
+    const { loggedIn } = useContext(AuthContext);
 
     const [isOpen, setOpen] = useState(false);
 
@@ -23,7 +23,7 @@ function Router() {
     if (loggedIn === true) {
         return (
             <BrowserRouter>
-                <Navbar email={emailCheck} isOpen={isOpen} toggle={() => setOpen(!isOpen)}/>
+                <Navbar isOpen={isOpen} toggle={() => setOpen(!isOpen)} />
                 <Switch>
                     <Route exact path="/join" component={Join} />
                     <Route path="/chat" component={Chat} />
@@ -35,9 +35,9 @@ function Router() {
     }
     else {
         return (<BrowserRouter>
-            <Navbar isOpen={isOpen} toggle={() => setOpen(!isOpen)}/>
+            <Navbar isOpen={isOpen} toggle={() => setOpen(!isOpen)} />
             <Switch>
-                <Route exact path="/" component={Home}/>
+                <Route exact path="/" component={Home} />
                 <Route path="/register" component={Registro} />
                 <Route path="/Login" component={Login} />
                 <Route path="/about" component={About} />
