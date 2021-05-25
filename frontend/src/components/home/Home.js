@@ -39,7 +39,7 @@ function Home() {
                                     <p style={{ margin: '0 0 15px 0', fontSize: '0.8rem' }}>*Android, desktop and mobile web.</p>
                                 </div>
                             </div>
-                            <Link className="nav-button" to="/login">Start Chatting</Link>
+                            <Link className="home-button" to="/login">Start Chatting</Link>
                         </div>
                     </div>
                     <div id="right-box">
