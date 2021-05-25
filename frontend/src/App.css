@@ -9,32 +9,11 @@ a {
   color: #ffffff;
 }
 
-button {
-  font-family: 'Reem Kufi', sans-serif;
-  font-size: 1em; 
-}
-
-
-.container {
-  width: 100%;
-  background: #121212;
-  display: flex;
-  align-items: center;
-}
-
-.main-screen {
-  display: flex;
-  align-content: space-between;
-  margin-top: 4%;
-  margin-left: 5%;
-  margin-right: 5%;
-}
-
 input[type="file"] {
   display: none;
 }
 
-input::placeholder, textarea, textarea::placeholder, input[type='text'], input[type='email'], input[type='password'] {
+input::placeholder, select, textarea, textarea::placeholder, input[type='text'], input[type='email'], input[type='password'] {
   color: #fff;
   font-family: 'Reem Kufi', sans-serif;
 }
