@@ -5,9 +5,9 @@ import Login from './components/auth/Login';
 import Registro from './components/auth/Registro';
 import Chat from './components/chat/Chat';
 import AuthContext from './components/context/AuthContext';
+import Dashboard from './components/dashboard/Dashboard';
 import Directory from './components/directory/Directory';
 import Home from './components/home/Home';
-import Join from './components/join/Join';
 import Navbar from './components/layout/navbar';
 import MyProfile from './components/myProfile/MyProfile';
 
@@ -25,11 +25,11 @@ function Router() {
             <BrowserRouter>
                 <Navbar isOpen={isOpen} toggle={() => setOpen(!isOpen)} />
                 <Switch>
-                    <Route exact path="/join" component={Join} />
+                    <Route exact path="/dashboard" component={Dashboard} />
                     <Route path="/chat" component={Chat} />
                     <Route path="/myProfile" component={MyProfile} />
                     <Route path="/directory" component={Directory} />
-                    <Route path="*" component={Join} />
+                    <Route path="*" component={Dashboard} />
                 </Switch>
             </BrowserRouter>)
     }
