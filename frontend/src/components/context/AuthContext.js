@@ -10,6 +10,7 @@ const AuthContext = createContext();
 function AuthContextProvider(props) {
     const [loggedIn, setLoggedIn] = useState(undefined);
     const [emailCheck, setemailCheck] = useState("");
+    const [validProfile, setValidProfile] = useState("");
 
     async function obtenerLoggeo() {
         const respuestaLoggeo = await axios.get("http://localhost:4000/auth/loggedIn");
@@ -22,7 +23,7 @@ function AuthContextProvider(props) {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ loggedIn, obtenerLoggeo, emailCheck }}>
+        <AuthContext.Provider value={{ loggedIn, obtenerLoggeo, emailCheck, validProfile, setValidProfile }}>
             {props.children}
         </AuthContext.Provider>
         //se incluye aquí el componente authcontext.provider para pasar contexto
