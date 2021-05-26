@@ -68,6 +68,10 @@
     margin-bottom: 20px;
 }
 
+.register-upload-image {
+    display: none;
+}
+
 @media screen and (min-width: 1200px) {
     #register-right {
         margin: 0 10% 0 0;
