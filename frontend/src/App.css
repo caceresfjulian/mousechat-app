@@ -13,9 +13,6 @@ a {
   color: #ffffff;
 }
 
-input[type="file"] {
-  display: none;
-}
 
 input::placeholder, select, textarea, textarea::placeholder, input[type='text'], input[type='email'], input[type='password'] {
   color: #fff;
