@@ -46,6 +46,8 @@
     ]
   },
   "devDependencies": {
+    "@iconify/icons-akar-icons": "^1.1.13",
+    "@iconify/icons-carbon": "^1.1.3",
     "@iconify/icons-el": "^1.1.0",
     "@iconify/icons-heroicons-outline": "^1.1.2",
     "@iconify/react": "^1.1.4"
