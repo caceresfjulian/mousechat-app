@@ -33,7 +33,7 @@ function Login() {
                 //Hay que habilitar el uso de cookies, entonces en app.js añadimos withcredentials.
 
                 await obtenerLoggeo();
-                historial.push("/join");
+                historial.push("/dashboard");
                 //Añadimos de nuevo esto para actualizar el contexto y redireccionar.
 
             } catch (error) {
