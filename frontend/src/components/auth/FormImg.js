@@ -9,6 +9,7 @@ function FormImg({ registrar, base64, photoUpload, email, setEmail, password, se
                 <label >
                     <img src={`data:image/png;base64,${base64}`} alt="Upload" style={{ width: '120px', height: '120px', borderRadius: '50%', border: '4px solid #FFFFFF', display: 'flex', alignItems: 'center', cursor: 'pointer' }} />
                     <input
+                        className="register-upload-image"
                         type="file"
                         accept=".png, .jpg"
                         onChange={(e) => photoUpload(e.target.files[0])}

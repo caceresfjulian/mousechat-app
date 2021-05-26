@@ -8,6 +8,7 @@ function Form_not_base64({ registrar, photoUpload, email, setEmail, password, se
                 <h1 style={{ fontWeight: 1 }}>Register</h1>
                 <label className="upload-image">
                     <input
+                        className="register-upload-image"
                         type="file"
                         accept=".png, .jpg"
                         onChange={(e) => photoUpload(e.target.files[0])}
