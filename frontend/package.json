@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@iconify/icons-el": "^1.1.0",
     "@iconify/icons-heroicons-outline": "^1.1.2",
     "@iconify/react": "^1.1.4"
   }
