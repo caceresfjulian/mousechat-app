@@ -1,11 +1,17 @@
 body {
   color: #ffffff;
   background: #121212;
-  font-family: 'Reem Kufi', sans-serif;
+  font-family: "Reem Kufi", sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
 #root {
   height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 a {
@@ -13,8 +19,13 @@ a {
   color: #ffffff;
 }
 
-
-input::placeholder, select, textarea, textarea::placeholder, input[type='text'], input[type='email'], input[type='password'] {
+input::placeholder,
+select,
+textarea,
+textarea::placeholder,
+input[type="text"],
+input[type="email"],
+input[type="password"] {
   color: #fff;
-  font-family: 'Reem Kufi', sans-serif;
+  font-family: "Reem Kufi", sans-serif;
 }
