@@ -8,9 +8,9 @@ import menuIcon from '@iconify/icons-heroicons-outline/menu';
 
 //Se crea una barra de navegación con el paquete npm i react-router-dom y su componente Link.
 
-function Navbar({ email, isOpen, toggle }) {
+function Navbar({ isOpen, toggle }) {
 
-    const { loggedIn } = useContext(AuthContext);
+    const { loggedIn, emailCheck } = useContext(AuthContext);
     //Para utilizar el contexto, debemos importar useContext y haber exportado el contexto original.
 
     //De esta forma se escribe el condicional para no renderizar algunos elementos de los componentes 
@@ -67,7 +67,7 @@ function Navbar({ email, isOpen, toggle }) {
                 <>
                     <ul>
                         <a href="/">
-                            {email}
+                            {emailCheck}
                         </a>
                         <li>
                             <Link className="nav-link" to="/join">Unirse a Chat</Link>
