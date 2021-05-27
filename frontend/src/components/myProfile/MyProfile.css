@@ -1,0 +1,168 @@
+#edit-box {
+  position: absolute;
+  width: 400px;
+  height: 320px;
+  left: 50%;
+  margin-left: -100px;
+  top: 50%;
+  margin-top: -150px;
+  z-index: 2;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+#edit-box img {
+  width: 100%;
+  border-radius: 15px 15px 0 0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+
+#edit-box h2 {
+  color: #000;
+  font-weight: 1;
+  margin: 25px 0 0 0;
+}
+
+#edit-box input {
+  color: #000000;
+  border: none;
+  border-bottom: solid 1px #969696;
+  align-self: flex-start;
+  margin: 0 0 0 15px;
+  padding-top: 5px;
+}
+
+#edit-box input::placeholder {
+  color: #969696;
+}
+
+#edit-box svg {
+  position: absolute;
+  top: 5px;
+  right: 3px;
+  cursor: pointer;
+}
+
+#edit-box button {
+  align-self: flex-end;
+  background-color: #62d366;
+  margin: 0 25px 0 0;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+#edit-box-input-button {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 25px 25px;
+}
+
+#edit-overlay {
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  opacity: 0.6;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#profile-container {
+  background-color: #121212;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#profile-container h3 {
+  font-weight: 1;
+}
+
+#profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #575757;
+}
+
+#profile-top {
+  padding: 20px 20px 0 20px;
+  background-color: #232323;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#profile-bottom {
+  padding: 10px 15px 0 15px;
+}
+
+#profile-bottom p {
+  margin: 0;
+}
+
+#profile-created {
+  background-color: #232323;
+  width: 100%;
+  color: #828282;
+  font-size: 0.9rem;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+#profile-created p {
+  padding: 0;
+  margin: 0;
+}
+
+#profile-update-pic {
+  cursor: pointer;
+  color: #828282;
+}
+
+.profile-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0 0 0;
+}
+
+.profile-item h3 {
+  color: #828282;
+}
+
+.profile-item-left {
+  display: flex;
+  align-items: flex-start;
+}
+
+.profile-item-left p {
+  padding: 4px 0 0 7px;
+}
+
+.profile-item span {
+  cursor: pointer;
+  color: #828282;
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+.verify-update {
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #268200;
+  padding: 8px 0 0 0;
+}
