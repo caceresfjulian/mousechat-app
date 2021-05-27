@@ -1,120 +1,240 @@
-import React, { useEffect, useState, useContext } from 'react'
-import AuthContext from '../context/AuthContext'
-import axios from 'axios'
-import moment from 'moment'
+import React, {
+  useEffect,
+  useState,
+  useContext,
+  useRef,
+  useCallback,
+} from "react";
+import AuthContext from "../context/AuthContext";
+import axios from "axios";
+import moment from "moment";
+import "./MyProfile.css";
+import { Icon } from "@iconify/react";
+import okIcon from "@iconify/icons-el/ok";
+import userAvatarFilled from "@iconify/icons-carbon/user-avatar-filled";
+import flagIcon from "@iconify/icons-akar-icons/flag";
+import closeFilled from "@iconify/icons-carbon/close-filled";
+import swal from "sweetalert";
+import editImage from "./modal_dashboard_compressed.jpg";
 
 // La información debe ser solicitada al backend.
 
 function MyProfile() {
+  // Guardamos en en contexto el perfil que ha sido validado.
+  const { emailCheck, validProfile, setValidProfile } = useContext(AuthContext);
 
-    const { emailCheck } = useContext(AuthContext);
+  const [overlay, setOverlay] = useState(false);
+  //Muestra u oculta la ventana de edición
+  const [edit, setEdit] = useState("");
+  //Almacena el NOMBRE de la propiedad a editar, el cual es pasado al componente ventana de edición
+  const [newValue, setNewValue] = useState("");
+  const [base64, setBase64] = useState("");
 
-    const [profile, setProfile] = useState("");
-    const [overlay, setOverlay] = useState(false);
-    //Muestra u oculta la ventana de edición
-    const [edit, setEdit] = useState("");
-    //Almacena el NOMBRE de la propiedad a editar, el cual es pasado al componente ventana de edición
-    const [newValue, setNewValue] = useState("");
-    const [base64, setBase64] = useState("");
+  const editOnClick = (param) => {
+    setEdit(param);
+    setOverlay(true);
+  };
 
+  async function solicitarPerfil() {
+    const infoProfile = await axios.get("http://localhost:4000/myprofile");
+    setValidProfile(infoProfile.data);
+    setBase64("");
+  }
 
-
-    const closeEdit = (e) => {
-        e.preventDefault();
-        setOverlay(false);
+  async function actualizarPerfil(e) {
+    e.preventDefault();
+    try {
+      const newData = {
+        email: emailCheck,
+        edit,
+        newValue,
+      };
+      await axios.post("http://localhost:4000/myprofile", newData);
+      solicitarPerfil();
+      swal("Updated", "Your profile was updated!", "success");
+      setOverlay(false);
+      setNewValue("");
+    } catch (error) {
+      console.log(error);
     }
+  }
 
-    const editOnClick = (param) => {
-        setEdit(param);
-        setOverlay(true);
+  function photoUpload(file) {
+    const reader = new FileReader();
+    if (reader !== undefined && file !== undefined) {
+      if (file.size > 2097152) {
+        alert("Verifique el archivo e intente de nuevo.");
+      } else if (file.type !== "image/png") {
+        alert("Verifique la extensión del archivo e intente de nuevo.");
+      } else {
+        reader.onloadend = (e) => {
+          setBase64(btoa(e.target.result));
+          setEdit("base64");
+          setNewValue(btoa(e.target.result));
+        };
+        reader.readAsBinaryString(file);
+        // Esta línea es muy importante. Sin ella, no se actualizan los estados
+      }
     }
+  }
 
-    async function obtenerPerfil() {
-        const infoProfile = await axios.get('http://localhost:4000/myprofile');
-        setProfile(infoProfile.data);
+  const validProfileHasChanged = useRef(false);
+
+  useEffect(() => {
+    // Creamos esta función asíncrona para poder hacer uso de la referencia y evitar que corra
+    // la solicitud del código al cerrar sesión
+    async function getProfile() {
+      // Si no hay perfil validado, solicitarlo. Si lo hay, no hacer nada.
+      const infoProfile = await axios.get("http://localhost:4000/myprofile");
+      setValidProfile(infoProfile.data);
     }
-
-    async function actualizarPerfil(e) {
-        e.preventDefault();
-        try {
-            const newData = {
-                email: emailCheck, edit, newValue
-            }
-            await axios.post('http://localhost:4000/myprofile', newData);
-            obtenerPerfil();
-            setBase64("");
-            alert('Actualizado');
-
-        } catch (error) {
-            console.log(error);
-        }
+    if (!validProfileHasChanged.current) {
+      getProfile();
+      validProfileHasChanged.current = true;
     }
+  }, [validProfile, setValidProfile]);
 
-    function photoUpload(file) {
-        const reader = new FileReader();
-        if (reader !== undefined && file !== undefined) {
-            if (file.size > 2097152) {
-                alert('Verifique el archivo e intente de nuevo.');
-            } else if (file.type !== "image/png") {
-                alert('Verifique la extensión del archivo e intente de nuevo.');
-            }
-            else {
-                reader.onloadend = (e) => {
-                    setBase64(btoa(e.target.result));
-                    setEdit('base64');
-                    setNewValue(btoa(e.target.result));
+  // Al oprimir esc, ocultar el overlay
+  const escFunction = useCallback((e) => {
+    if (e.keyCode === 27) {
+      setOverlay(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("keydown", escFunction, false);
+    return () => {
+      document.removeEventListener("keydown", escFunction, false);
+    };
+  }, [escFunction]);
+
+  if (validProfile !== "") {
+    return (
+      <>
+        <div id="profile-container">
+          <div>
+            <div id="profile-top">
+              <img
+                id="profile-img"
+                src={
+                  base64
+                    ? `data:image/png;base64,` + base64
+                    : `data:image/png;base64,` + validProfile.base64
                 }
-                reader.readAsBinaryString(file)
-                // Esta línea es muy importante. Sin ella, no se actualizan los estados
-            }
-        }
-    }
-
-    useEffect(() => {
-        obtenerPerfil()
-    }, [])
-
-    if (profile !== "") {
-        return (
-            <div>
-                <h1>My profile ({emailCheck}) </h1>
-                <p>{`Created: ` + moment(profile.created).format('MM/DD/YYYY')}</p>
-                <img src={base64 ? `data:image/png;base64,` + base64 : `data:image/png;base64,` + profile.base64} alt="Perfil" width="150" height="150" />
-                <label>Update your profile pic: </label>
+                alt="Perfil"
+              />
+              <label id="profile-update-pic">
+                Edit
                 <input
-                    type="file"
-                    accept=".png"
-                    onChange={(e) => photoUpload(e.target.files[0])}
+                  className="register-upload-image"
+                  type="file"
+                  accept=".png"
+                  onChange={(e) => photoUpload(e.target.files[0])}
                 />
-                <button style={base64 ? { display: 'block' } : { display: 'none' }} onClick={e => actualizarPerfil(e)}>Update</button>
-                <form style={{ display: overlay ? "block" : "none" }}>
-                    <h5>Edit {edit}:</h5>
-                    <input type="text" placeholder={`New ${edit}`} onChange={e => setNewValue(e.target.value)} />
-                    <button onClick={e => actualizarPerfil(e)}>Update</button>
-                    <button onClick={e => closeEdit(e)}>Close</button>
-                </form>
-                <h3>Username:</h3>
-                <p>{profile.username}</p>
-                <button onClick={e => editOnClick('username')}>Edit</button>
-                <h3>Country:</h3>
-                <p>{profile.country === "" ? `No country selected.` : profile.country}</p>
-                <button onClick={e => editOnClick('country')}>Edit</button>
+              </label>
+              <h3 style={{ color: "#D8D8D8" }}>{validProfile.email}</h3>
+            </div>
+            <label
+              className="verify-update"
+              style={base64 ? { display: "flex" } : { display: "none" }}
+              onClick={(e) => actualizarPerfil(e)}
+            >
+              <Icon
+                icon={okIcon}
+                style={{ color: "#009A06", fontSize: "25px" }}
+              />
+              Update
+            </label>
+            <div id="profile-bottom">
+              <div className="profile-item">
+                <div className="profile-item-left">
+                  <Icon
+                    icon={userAvatarFilled}
+                    style={{ color: "#636363", fontSize: "25px" }}
+                  />
+                  <p>{validProfile.username}</p>
+                </div>
+                <span onClick={(e) => editOnClick("username")}>Edit</span>
+              </div>
+              <div className="profile-item">
+                <div className="profile-item-left">
+                  <Icon
+                    icon={flagIcon}
+                    style={{
+                      color: "#636363",
+                      fontSize: "25px",
+                    }}
+                  />
+                  <p>
+                    {validProfile.country === ""
+                      ? `None`
+                      : validProfile.country}
+                  </p>
+                </div>
+                <span onClick={(e) => editOnClick("country")}>Edit</span>
+              </div>
+              <div className="profile-item">
                 <h3>Biography:</h3>
-                <p>{profile.bio === "" ? `No biography provided.` : profile.bio}</p>
-                <button onClick={e => editOnClick('bio')}>Edit</button>
+                <span onClick={(e) => editOnClick("bio")}>Edit</span>
+              </div>
+              <p>
+                {validProfile.bio === ""
+                  ? `No biography provided`
+                  : validProfile.bio}
+              </p>
             </div>
-        )
-    } else {
-        return (
-            <div>
-                <h1>My profile</h1>
-                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ft4.ftcdn.net%2Fjpg%2F02%2F15%2F84%2F43%2F240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg&f=1&nofb=1" alt="Perfil" />
-                <h4>Waiting for server response.</h4>
+          </div>
+          <div id="profile-created">
+            <p>
+              {`Created: ` + moment(validProfile.created).format("MM/DD/YYYY")}
+            </p>
+          </div>
+        </div>
+        <div
+          id="edit-overlay"
+          style={{ display: overlay ? "block" : "none" }}
+          onClick={() => setOverlay(false)}
+        ></div>
+        <div id="edit-box" style={{ display: overlay ? "block" : "none" }}>
+          <img src={editImage} alt="smiling woman" />
+          <Icon
+            icon={closeFilled}
+            style={{ color: "#fff", fontSize: "30px" }}
+            onClick={() => setOverlay(false)}
+          />
+          <div id="edit-box-input-button">
+            <h2 style={{ alignSelf: "center" }}>Edit {edit}</h2>
+            <div
+              style={{
+                margin: "15px 0 0 0",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <input
+                value={newValue}
+                type="text"
+                placeholder={`Type new ${edit}`}
+                onChange={(e) => setNewValue(e.target.value)}
+              />
+              <button onClick={(e) => actualizarPerfil(e)}>Ok</button>
             </div>
-        )
-    }
-
-
+          </div>
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <div>
+        <h1>My profile</h1>
+        <img
+          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ft4.ftcdn.net%2Fjpg%2F02%2F15%2F84%2F43%2F240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg&f=1&nofb=1"
+          alt="Perfil"
+        />
+        <h4>Waiting for server response.</h4>
+      </div>
+    );
+  }
 }
 
-export default MyProfile
+export default MyProfile;
