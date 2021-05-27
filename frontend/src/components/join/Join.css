@@ -1,31 +1,33 @@
-html,
-body {
-  font-family: "Roboto", sans-serif;
-  padding: 0;
-  margin: 0;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.joinOuterContainer {
+.join-container {
   display: flex;
   justify-content: center;
   text-align: center;
   align-items: center;
-  background-color: #1a1a1d;
+  background-image: url("./dashboard_bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
   width: 100%;
 }
 
-.joinInnerContainer {
-  width: 20%;
+.join-box {
+  width: 320px;
+  border: 2px solid #fff;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(10px);
+}
+
+.join-box h1 {
+  font-weight: 1;
+  margin: 14px 0 0 0;
 }
 
 .joinInput {
-  color: red !important;
   padding: 15px 20px;
   width: 100%;
+  background-color: unset;
+  color: #fff;
+  border: none;
 }
 
 .heading {
@@ -40,15 +42,50 @@ body {
   text-transform: uppercase;
   text-decoration: none;
   background: #2979ff;
-  padding: 20px;
+  padding: 10px;
   border-radius: 5px;
   display: inline-block;
   border: none;
   width: 100%;
+  cursor: pointer;
 }
 
-.mt-20 {
-  margin-top: 20px;
+.room-selected {
+  animation: blinkingText 3s infinite;
+}
+
+@keyframes blinkingText {
+  0% {
+    border: 4px solid #fff;
+    color: #fff;
+  }
+  50% {
+    border: 4px solid transparent;
+    color: transparent;
+  }
+
+  100% {
+    border: 4px solid #fff;
+    color: #fff;
+  }
+}
+
+.join-box-options {
+  display: block;
+  border: 4px solid #fff;
+  margin: 40px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  text-align: left;
+  padding: 5px 0 1px 20px;
+}
+
+.py10x50 {
+  padding: 10px 50px !important;
+}
+
+.mb20 {
+  margin-bottom: 20px;
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
