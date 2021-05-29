@@ -21,7 +21,13 @@ import editImage from "./modal_dashboard_compressed.jpg";
 
 function MyProfile() {
   // Guardamos en en contexto el perfil que ha sido validado.
-  const { emailCheck, validProfile, setValidProfile } = useContext(AuthContext);
+  const {
+    emailCheck,
+    validProfile,
+    setValidProfile,
+    profileIsOpen,
+    setProfileIsOpen,
+  } = useContext(AuthContext);
 
   const [overlay, setOverlay] = useState(false);
   //Muestra u oculta la ventana de edición
@@ -111,7 +117,20 @@ function MyProfile() {
   if (validProfile !== "") {
     return (
       <>
-        <div id="profile-container">
+        <div
+          id="profile-container"
+          className={profileIsOpen ? "profile-responsive" : ""}
+        >
+          <Icon
+            icon={userAvatarFilled}
+            id={profileIsOpen ? "profile-toggle" : "profile-none"}
+            onClick={() => setProfileIsOpen(!profileIsOpen)}
+          />
+          <Icon
+            icon={closeFilled}
+            id={profileIsOpen ? "profile-none" : "profile-toggle"}
+            onClick={() => setProfileIsOpen(!profileIsOpen)}
+          />
           <div>
             <div id="profile-top">
               <img
