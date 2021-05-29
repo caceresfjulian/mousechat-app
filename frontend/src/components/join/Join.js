@@ -48,7 +48,7 @@ function Join() {
             onClick={(e) => (!name || !room ? e.preventDefault() : null)}
             to={`/chat?name=${name}&room=${room}`}
           >
-            <button className="navigation-button py10x50 mb20" type="submit">
+            <button id="join-button" className="py10x50 mb20" type="submit">
               <h2 style={{ margin: 0, fontWeight: 1 }}>Join</h2>
             </button>
           </Link>
