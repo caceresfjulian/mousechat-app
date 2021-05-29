@@ -205,6 +205,12 @@
   .profile-responsive div {
     display: none;
   }
+
+  .profile-item {
+    margin: 0;
+    padding: 0;
+  }
+
   #profile-created {
     display: none;
   }
@@ -232,6 +238,14 @@
 
   #profile-bottom {
     width: 100%;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  #profile-bottom h3 {
+    margin: 0;
   }
 
   #edit-box {
