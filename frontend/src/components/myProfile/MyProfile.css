@@ -215,6 +215,7 @@
     left: 10px;
     color: #fff;
     font-size: 30px;
+    cursor: pointer;
   }
 
   #profile-img {
