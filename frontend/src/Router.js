@@ -20,7 +20,7 @@ function Router() {
   if (loggedIn === true) {
     return (
       <BrowserRouter>
-        <Navbar isOpen={isOpen} toggle={() => setOpen(!isOpen)} />
+        <Navbar />
         <Switch>
           <Route exact path="/dashboard" component={Dashboard} />
           <Route path="/chat" component={Chat} />
