@@ -118,7 +118,7 @@ function Navbar({ isOpen, toggle }) {
       {loggedIn === true && (
         <>
           <ul style={{ justifyContent: "flex-end" }}>
-            <LogOutBtn className="btn btn-outline-success" />
+            <LogOutBtn />
           </ul>
         </>
       )}

@@ -51,7 +51,7 @@
 }
 
 .room-selected {
-  animation: blinkingText 3s infinite;
+  animation: blinkingText 2s infinite;
 }
 
 @keyframes blinkingText {
@@ -59,7 +59,7 @@
     border: 4px solid #fff;
     color: #fff;
   }
-  50% {
+  80% {
     border: 4px solid transparent;
     color: transparent;
   }

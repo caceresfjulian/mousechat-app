@@ -1,72 +1,76 @@
 .navbar {
-    min-height: 62px;
-    width: 100%;
-    display: flex;
-    padding: 0px 20px;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #121212;
+  min-height: 62px;
+  width: 100%;
+  display: flex;
+  padding: 0px 20px;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #121212;
 }
 
 ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    width: 50%;
-    margin: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: 0;
 }
 
 li {
-    text-decoration: none;
+  text-decoration: none;
+}
+
+#logout-button {
+  cursor: pointer;
 }
 
 .navigation-button {
-    color: #000;
-    background: linear-gradient(180deg, #FFFFFF 0%, #717171 100%);
-    border-radius: 10px;
-    padding: 0.5rem 1.5rem;
-    color: #000;
-    cursor: pointer;
+  color: #000;
+  background: linear-gradient(180deg, #ffffff 0%, #717171 100%);
+  border-radius: 10px;
+  padding: 0.5rem 1.5rem;
+  color: #000;
+  cursor: pointer;
 }
 
 #menu-icon {
-    display: none
+  display: none;
 }
 
 @media screen and (max-width: 600px) {
-    .navbar li {
-        display: none;
-        border: 1px solid white;
-    }
-    .navbar ul {
-        width: unset; 
-        z-index: 10;
-    }
-    #menu-icon {
-        display: block;
-    }
-    .responsive-navbar {
-        top: 19px;
-        right: 20px;
-        position: absolute;
-        display: block;
-    }
-    .responsive-navbar #menu-icon {
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-    .responsive-navbar li {
-        display: block;
-        padding-top: 15px;
-        background-color: #121212;
-        padding: 10px 20px
-    }
-    .navigation-button {
-        background: none;
-        color: #fff
-    }
+  .navbar li {
+    display: none;
+    border: 1px solid white;
+  }
+  .navbar ul {
+    width: unset;
+    z-index: 10;
+  }
+  #menu-icon {
+    display: block;
+  }
+  .responsive-navbar {
+    top: 19px;
+    right: 20px;
+    position: absolute;
+    display: block;
+  }
+  .responsive-navbar #menu-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .responsive-navbar li {
+    display: block;
+    padding-top: 15px;
+    background-color: #121212;
+    padding: 10px 20px;
+  }
+  .navigation-button {
+    background: none;
+    color: #fff;
+  }
 }
