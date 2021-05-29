@@ -119,19 +119,19 @@ function MyProfile() {
       <>
         <div
           id="profile-container"
-          className={profileIsOpen ? "profile-responsive" : ""}
+          className={profileIsOpen ? "" : "profile-responsive"}
         >
           <Icon
             icon={userAvatarFilled}
-            id={profileIsOpen ? "profile-toggle" : "profile-none"}
+            id={profileIsOpen ? "profile-none" : "profile-toggle"}
             onClick={() => setProfileIsOpen(!profileIsOpen)}
           />
           <Icon
             icon={closeFilled}
-            id={profileIsOpen ? "profile-none" : "profile-toggle"}
+            id={profileIsOpen ? "profile-toggle" : "profile-none"}
             onClick={() => setProfileIsOpen(!profileIsOpen)}
           />
-          <div>
+          <div id={profileIsOpen ? "profile-general" : ""}>
             <div id="profile-top">
               <img
                 id="profile-img"
@@ -214,29 +214,31 @@ function MyProfile() {
           style={{ display: overlay ? "block" : "none" }}
           onClick={() => setOverlay(false)}
         ></div>
-        <div id="edit-box" style={{ display: overlay ? "block" : "none" }}>
-          <img src={editImage} alt="smiling woman" />
-          <Icon
-            icon={closeFilled}
-            style={{ color: "#fff", fontSize: "30px" }}
-            onClick={() => setOverlay(false)}
-          />
-          <div id="edit-box-input-button">
-            <h2 style={{ alignSelf: "center" }}>Edit {edit}</h2>
-            <div
-              style={{
-                margin: "15px 0 0 0",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <input
-                value={newValue}
-                type="text"
-                placeholder={`Type new ${edit}`}
-                onChange={(e) => setNewValue(e.target.value)}
-              />
-              <button onClick={(e) => actualizarPerfil(e)}>Ok</button>
+        <div id={overlay ? "edit-container" : ""}>
+          <div id="edit-box" style={{ display: overlay ? "block" : "none" }}>
+            <img src={editImage} alt="smiling woman" />
+            <Icon
+              icon={closeFilled}
+              style={{ color: "#fff", fontSize: "30px" }}
+              onClick={() => setOverlay(false)}
+            />
+            <div id="edit-box-input-button">
+              <h2 style={{ alignSelf: "center" }}>Edit {edit}</h2>
+              <div
+                style={{
+                  margin: "15px 0 0 0",
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                <input
+                  value={newValue}
+                  type="text"
+                  placeholder={`Type new ${edit}`}
+                  onChange={(e) => setNewValue(e.target.value)}
+                />
+                <button onClick={(e) => actualizarPerfil(e)}>Ok</button>
+              </div>
             </div>
           </div>
         </div>

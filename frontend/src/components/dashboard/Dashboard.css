@@ -4,3 +4,11 @@
   justify-content: space-between;
   height: inherit;
 }
+
+@media screen and (max-width: 600px) {
+  #dashboard-container {
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+  }
+}

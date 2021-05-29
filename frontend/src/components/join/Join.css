@@ -97,16 +97,8 @@
   cursor: pointer;
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
-  .joinOuterContainer {
+@media screen and (max-width: 600px) {
+  .join-container {
     height: 100%;
   }
-
-  .joinInnerContainer {
-    width: 90%;
-  }
-}
-
-button:focus {
-  outline: 0;
 }
