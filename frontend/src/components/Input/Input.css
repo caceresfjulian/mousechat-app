@@ -1,27 +1,38 @@
 .form {
-    display: flex;
-    border-top: 2px solid #D3D3D3;
-  }
-  
-  .input {
-    border: none;
-    border-radius: 0;
-    padding: 5%;
-    width: 80%;
-    font-size: 1.2em;
-  }
-  
-  input:focus, textarea:focus, select:focus{
-    outline: none;
-  }
-  
-  .sendButton {
-    color: #fff !important;
-    text-transform: uppercase;
-    text-decoration: none;
-    background: #2979FF;
-    padding: 20px;
-    display: inline-block;
-    border: none;
-    width: 20%;
-  }
+  display: flex;
+  border-top: 2px solid #d3d3d3;
+  padding: 15px;
+  background-color: #121212;
+  justify-content: space-between;
+}
+
+.input {
+  border: none;
+  border-radius: 0;
+  padding: 2%;
+  width: 80%;
+  font-size: 1em;
+  border-radius: 8px;
+  color: black !important;
+}
+
+.input::placeholder {
+  color: #a9a9a9;
+  font-size: 1rem;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+.sendButton {
+  text-decoration: none;
+  color: black;
+  background: linear-gradient(180deg, #ffffff 0%, #717171 100%);
+  display: inline-block;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 10px;
+}
