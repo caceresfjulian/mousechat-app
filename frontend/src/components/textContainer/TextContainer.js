@@ -28,6 +28,11 @@ const TextContainer = ({ users }) => (
                   </span>
                 );
               })}
+            {users.length > 5 ? (
+              <p style={{ textJustify: "revert" }}>
+                And {users.length - 5} more...
+              </p>
+            ) : null}
           </span>
         </div>
       </div>
