@@ -15,7 +15,6 @@ import userAvatarFilled from "@iconify/icons-carbon/user-avatar-filled";
 import flagIcon from "@iconify/icons-akar-icons/flag";
 import closeFilled from "@iconify/icons-carbon/close-filled";
 import swal from "sweetalert";
-import editImage from "./modal_dashboard_compressed.jpg";
 
 // La información debe ser solicitada al backend.
 
@@ -216,13 +215,12 @@ function MyProfile() {
         ></div>
         <div id={overlay ? "edit-container" : ""}>
           <div id="edit-box" style={{ display: overlay ? "block" : "none" }}>
-            <img src={editImage} alt="smiling woman" />
             <Icon
               icon={closeFilled}
-              style={{ color: "#fff", fontSize: "30px" }}
+              style={{ color: "#a0a0a0", fontSize: "25px" }}
               onClick={() => setOverlay(false)}
             />
-            <div id="edit-box-input-button">
+            <div id="edit-box-input">
               <h2 style={{ alignSelf: "center" }}>Edit {edit}</h2>
               <div
                 style={{
