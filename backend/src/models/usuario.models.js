@@ -9,7 +9,7 @@ const usuarioSchema = new mongoose.Schema({
   username: { type: String, required: true },
   bio: { type: String, required: false },
   country: { type: String, required: false },
-  connected: { type: Boolean, required: true },
+  last_connection: { type: Date, required: true },
   created: { type: Date, required: true },
 });
 
