@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useCallback, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import About from "./components/about/About";
 import Login from "./components/auth/Login";
@@ -15,6 +15,19 @@ function Router() {
   const { loggedIn } = useContext(AuthContext);
 
   const [isOpen, setOpen] = useState(false);
+
+  const pressF5 = useCallback((e) => {
+    if (e.keyCode === 116) {
+      e.preventDefault();
+    }
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("keydown", pressF5, false);
+    return () => {
+      document.removeEventListener("keydown", pressF5, false);
+    };
+  }, [pressF5]);
 
   //Modifiqué este tipo de lógica para evitar la advertencia: <Route> elements should not change from controlled to uncontrolled "
   if (loggedIn === true) {
