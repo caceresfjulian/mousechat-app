@@ -9,14 +9,15 @@ import TextContainer from "../textContainer/TextContainer";
 
 let socket;
 
+const ENDPOINT = "localhost:4000";
+
 const Chat = ({ location }) => {
   // gracias al router tenemos acceso a location que nos da la URL actual de la página
   const [name, setname] = useState("");
   const [room, setroom] = useState("");
+  const [users, setUsers] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  const [users, setUsers] = useState("");
-  const ENDPOINT = "localhost:4000";
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
@@ -28,14 +29,18 @@ const Chat = ({ location }) => {
     setroom(room);
 
     // Unir el usuario a la sala
-    socket.emit("join", { name, room }, () => {});
+    socket.emit("join", { name, room }, (error) => {
+      if (error) {
+        alert(error);
+      }
+    });
 
     return () => {
-      socket.emit("disconnected");
+      socket.emit("disconnection");
 
       socket.off();
     };
-  }, [ENDPOINT, location.search]);
+  }, [location.search]);
   // solo cuando cambie el ENDPOINT y location.search, se volverá a correr el useEffect
 
   useEffect(() => {

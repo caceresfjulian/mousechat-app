@@ -102,8 +102,9 @@ io.on("connection", (socket) => {
     callback();
   });
 
-  socket.on("disconnect", () => {
+  socket.on("disconnection", () => {
     const user = removeUser(socket.id);
+    console.log("User disconnected");
 
     if (user) {
       io.to(user.room).emit("message", {
