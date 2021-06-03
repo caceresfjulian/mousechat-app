@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import onlineIcon from "../../icons/onlineIcon.png";
 import { Icon } from "@iconify/react";
-import closeIcon from "../../icons/closeIcon.png";
 import closeFilled from "@iconify/icons-carbon/close-filled";
 import "./Infobar.css";
 
