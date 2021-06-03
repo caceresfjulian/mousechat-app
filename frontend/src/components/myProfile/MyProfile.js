@@ -49,16 +49,32 @@ function MyProfile() {
   async function actualizarPerfil(e) {
     e.preventDefault();
     try {
-      const newData = {
-        email: emailCheck,
-        edit,
-        newValue,
-      };
-      await axios.post("http://localhost:4000/myprofile", newData);
-      solicitarPerfil();
-      swal("Updated", "Your profile was updated!", "success");
-      setOverlay(false);
-      setNewValue("");
+      if (
+        (newValue === "" ||
+          newValue.trim().length < 3 ||
+          newValue.trim().length > 12) &&
+        (edit === "username" || edit === "country")
+      ) {
+        swal("Oops!", "Check the required field.", "warning");
+      } else if (
+        (newValue === "" ||
+          newValue.trim().length < 12 ||
+          newValue.trim().length > 100) &&
+        edit === "bio"
+      ) {
+        swal("Oops!", "Check the required field.", "warning");
+      } else {
+        const newData = {
+          email: emailCheck,
+          edit,
+          newValue,
+        };
+        await axios.post("http://localhost:4000/myprofile", newData);
+        solicitarPerfil();
+        swal("Updated", "Your profile was updated!", "success");
+        setOverlay(false);
+        setNewValue("");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -195,11 +211,13 @@ function MyProfile() {
                 <h3>Biography:</h3>
                 <span onClick={(e) => editOnClick("bio")}>Edit</span>
               </div>
-              <p>
-                {validProfile.bio === ""
-                  ? `No biography provided`
-                  : validProfile.bio}
-              </p>
+              <div id="bio-box">
+                <p>
+                  {validProfile.bio === ""
+                    ? `No biography provided`
+                    : validProfile.bio}
+                </p>
+              </div>
             </div>
           </div>
           <div id="profile-created">
@@ -231,6 +249,7 @@ function MyProfile() {
               >
                 <input
                   value={newValue}
+                  id={edit === "bio" ? "bio-input" : null}
                   type="text"
                   placeholder={`Type new ${edit}`}
                   onChange={(e) => setNewValue(e.target.value)}

@@ -1,3 +1,7 @@
+#bio-input {
+  width: 70%;
+}
+
 #edit-box {
   position: absolute;
   max-width: 500px;
@@ -135,6 +139,8 @@
 
 #profile-bottom p {
   margin: 0;
+  max-width: 160px;
+  word-wrap: break-word;
 }
 
 #profile-created {
@@ -250,5 +256,9 @@
 
   #edit-box {
     width: 350px;
+  }
+
+  #bio-box p {
+    display: none;
   }
 }
