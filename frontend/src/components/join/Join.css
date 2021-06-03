@@ -37,37 +37,9 @@
   border-bottom: 2px solid white;
 }
 
-.button {
-  color: #fff !important;
-  text-transform: uppercase;
-  text-decoration: none;
-  background: #2979ff;
-  padding: 10px;
-  border-radius: 5px;
-  display: inline-block;
-  border: none;
-  width: 100%;
-  cursor: pointer;
-}
-
 .room-selected {
-  animation: blinkingText 2s infinite;
-}
-
-@keyframes blinkingText {
-  0% {
-    border: 4px solid #fff;
-    color: #fff;
-  }
-  80% {
-    border: 4px solid transparent;
-    color: transparent;
-  }
-
-  100% {
-    border: 4px solid #fff;
-    color: #fff;
-  }
+  border: 4px solid #969696 !important;
+  background-color: #2c2c2c;
 }
 
 .join-box-options {
