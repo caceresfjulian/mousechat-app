@@ -53,7 +53,7 @@ function MyProfile() {
       if (
         (newValue === "" ||
           newValue.trim().length < 3 ||
-          newValue.trim().length > 12) &&
+          newValue.trim().length > 18) &&
         (edit === "username" || edit === "country")
       ) {
         swal("Oops!", "Check the required field.", "warning");
