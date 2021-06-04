@@ -9,6 +9,7 @@
   top: 0;
   left: 0;
   background-color: #121212;
+  z-index: 10;
 }
 
 ul {
