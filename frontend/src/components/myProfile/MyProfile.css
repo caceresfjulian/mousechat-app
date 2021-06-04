@@ -171,6 +171,10 @@
   font-size: 0.8rem;
 }
 
+.register-upload-image {
+  display: none;
+}
+
 .verify-update {
   cursor: pointer;
   flex-direction: column;
