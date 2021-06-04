@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Fade from "react-reveal/Fade";
 import Flip from "react-reveal/Flip";
 import "./Home.css";
-import mockup from "./mockup.png";
+import mockup from "./web_mockup_compressed.webp";
 import profile from "./profile.jpeg";
 import mern from "./MERN-logo.png";
 import figma from "./figma_logo.png";
