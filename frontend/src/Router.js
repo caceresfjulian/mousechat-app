@@ -1,15 +1,15 @@
 import React, { useContext, useState, useCallback, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import LoadingPage from "./components/loadingPage/LoadingPage";
-import Chat from "./components/chat/Chat";
 import AuthContext from "./components/context/AuthContext";
-import Dashboard from "./components/dashboard/Dashboard";
 import Navbar from "./components/layout/navbar";
 
 const Home = React.lazy(() => import("./components/home/Home"));
 const About = React.lazy(() => import("./components/about/About"));
 const Login = React.lazy(() => import("./components/auth/Login"));
 const Registro = React.lazy(() => import("./components/auth/Registro"));
+const Dashboard = React.lazy(() => import("./components/dashboard/Dashboard"));
+const Chat = React.lazy(() => import("./components/chat/Chat"));
 
 //Aquí se crean las diferentes rutas del frontend gracias a react-router-dom.
 
