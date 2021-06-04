@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Fade from "react-reveal/Fade";
 import swal from "sweetalert";
 import emailjs from "emailjs-com";
-import profile from "../home/profile.jpeg";
+import profile from "../home/profile_compressed.webp";
 import "./About.css";
 
 function About() {
