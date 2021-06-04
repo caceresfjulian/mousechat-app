@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Fade from "react-reveal/Fade";
+import Flip from "react-reveal/Flip";
 import "./Home.css";
 import mockup from "./mockup.png";
 import profile from "./profile.jpeg";
@@ -14,9 +16,11 @@ function Home() {
         <div id="home-main-screen">
           <div id="left-box">
             <div>
-              <h1 style={{ fontWeight: 1, margin: 0 }}>
-                Send, receive messages, edit your profile and more!
-              </h1>
+              <Flip bottom duration={1000} delay={500}>
+                <h1 style={{ fontWeight: 1, margin: 0 }}>
+                  Send, receive messages, edit your profile and more!
+                </h1>
+              </Flip>
               <div style={{ display: "flex", marginBottom: 15 }}>
                 <div>
                   <p>Available for:</p>
@@ -79,74 +83,80 @@ function Home() {
             </div>
           </div>
           <div id="right-box">
-            <img src={mockup} style={{ width: "100%" }} alt="preview" />
+            <img
+              src={mockup}
+              style={{ width: "100%", overflow: "hidden" }}
+              alt="preview"
+            />
           </div>
         </div>
-        <div id="tech">
-          <div id="tech-left">
-            <h2 style={{ fontWeight: 1, marginBottom: 0 }}>
-              About the project
-            </h2>
-            <p>
-              MouseChat was developed in 2021 as part of my MERN web dev
-              portfolio, using several tools as Figma for the UI, Socket.io for
-              the connection between users, Abode Illustrator and Adobe
-              Photoshop for the visual identity, besides Javascript as the main
-              coding language.{" "}
-            </p>
-          </div>
-          <div id="tech-center">
-            <div
-              style={{
-                backgroundColor: "#BC1414",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "18px",
-                borderRadius: "20px",
-                flexDirection: "column",
-                boxShadow: "5px 6px 10px 0px rgba(0,0,0,0.8)",
-                margin: "15px ",
-              }}
-            >
-              <img
-                src={profile}
-                style={{ borderRadius: "50%", border: "5px solid #fff" }}
-                alt="profile"
-                width="70%"
-              />
+        <Fade>
+          <div id="tech">
+            <div id="tech-left">
+              <h2 style={{ fontWeight: 1, marginBottom: 0 }}>
+                About the project
+              </h2>
+              <p>
+                MouseChat was developed in 2021 as part of my MERN web dev
+                portfolio, using several tools as Figma for the UI, Socket.io
+                for the connection between users, Abode Illustrator and Adobe
+                Photoshop for the visual identity, besides Javascript as the
+                main coding language.{" "}
+              </p>
+            </div>
+            <div id="tech-center">
               <div
                 style={{
-                  backgroundColor: "#FFFFFF",
-                  padding: "0 8px",
-                  marginTop: "10px",
-                  minWidth: "150px",
-                  borderRadius: 15,
+                  backgroundColor: "#BC1414",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "18px",
+                  borderRadius: "20px",
+                  flexDirection: "column",
+                  boxShadow: "5px 6px 10px 0px rgba(0,0,0,0.8)",
+                  margin: "15px ",
                 }}
               >
-                <p style={{ margin: "5px 0", textAlign: "center" }}>
-                  Julian Caceres Florez <br />
-                  <span style={{ color: "#565656" }}>
-                    {" "}
-                    Web dev, journalist{" "}
-                  </span>
-                </p>
+                <img
+                  src={profile}
+                  style={{ borderRadius: "50%", border: "5px solid #fff" }}
+                  alt="profile"
+                  width="70%"
+                />
+                <div
+                  style={{
+                    backgroundColor: "#FFFFFF",
+                    padding: "0 8px",
+                    marginTop: "10px",
+                    minWidth: "150px",
+                    borderRadius: 15,
+                  }}
+                >
+                  <p style={{ margin: "5px 0", textAlign: "center" }}>
+                    Julian Caceres Florez <br />
+                    <span style={{ color: "#565656" }}>
+                      {" "}
+                      Web dev, journalist{" "}
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div id="tech-right">
+              <h2 style={{ fontWeight: 1 }}>Technologies</h2>
+              <img
+                src={mern}
+                alt="MERN stack. MongoDB, ExpressJS, ReactJS, NodeJS"
+                id="tech-1"
+              />
+              <div>
+                <img src={figma} alt="Figma" width="30%" />
+                <img src={socket} alt="Socket.io" width="30%" />
               </div>
             </div>
           </div>
-          <div id="tech-right">
-            <h2 style={{ fontWeight: 1 }}>Technologies</h2>
-            <img
-              src={mern}
-              alt="MERN stack. MongoDB, ExpressJS, ReactJS, NodeJS"
-              id="tech-1"
-            />
-            <div>
-              <img src={figma} alt="Figma" width="30%" />
-              <img src={socket} alt="Socket.io" width="30%" />
-            </div>
-          </div>
-        </div>
+        </Fade>
       </div>
     </>
   );
