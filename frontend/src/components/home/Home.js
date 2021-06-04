@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import Fade from "react-reveal/Fade";
 import Flip from "react-reveal/Flip";
 import "./Home.css";
-import mockup from "./web_mockup_compressed.webp";
-import profile from "./profile.jpeg";
+import profile from "./profile_compressed.webp";
 import mern from "./MERN-logo.png";
 import figma from "./figma_logo.png";
 import socket from "./socketio.png";
+import LoadingComp from "../loadingPage/LoadingComp";
+
+const Mockup = React.lazy(() => import("./Mockup"));
 
 function Home() {
   return (
@@ -83,11 +85,9 @@ function Home() {
             </div>
           </div>
           <div id="right-box">
-            <img
-              src={mockup}
-              style={{ width: "100%", overflow: "hidden" }}
-              alt="preview"
-            />
+            <React.Suspense fallback={<LoadingComp />}>
+              <Mockup />
+            </React.Suspense>
           </div>
         </div>
         <Fade>
