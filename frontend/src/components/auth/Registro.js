@@ -36,7 +36,7 @@ function Registro() {
           setBase64(btoa(e.target.result));
         };
         reader.readAsBinaryString(file);
-        // Esta línea es muy importante. Sin ella, no se actualizan los estados
+        //Esta línea es muy importante. Sin ella, no se actualizan los estados
       }
     }
   }
