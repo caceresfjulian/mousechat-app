@@ -56,6 +56,8 @@ function MyProfile() {
           newValue.trim().length > 18) &&
         (edit === "username" || edit === "country")
       ) {
+        setOverlay(false);
+        setNewValue("");
         swal("Oops!", "Check the required field.", "warning");
       } else if (
         (newValue === "" ||
@@ -63,8 +65,13 @@ function MyProfile() {
           newValue.trim().length > 100) &&
         edit === "bio"
       ) {
+        setOverlay(false);
+        setNewValue("");
         swal("Oops!", "Check the required field.", "warning");
       } else {
+        setOverlay(false);
+        setNewValue("");
+        swal("Loading...", "Wait a moment, please", "info", { button: false });
         const newData = {
           email: emailCheck,
           edit,
@@ -73,8 +80,6 @@ function MyProfile() {
         await axios.post("http://localhost:4000/myprofile", newData);
         solicitarPerfil();
         swal("Updated", "Your profile was updated!", "success");
-        setOverlay(false);
-        setNewValue("");
       }
     } catch (error) {
       console.log(error);
