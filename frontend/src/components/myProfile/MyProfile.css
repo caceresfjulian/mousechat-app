@@ -188,6 +188,10 @@
   display: none;
 }
 
+#profile-toggle-description {
+  display: none;
+}
+
 #profile-none {
   display: none;
 }
@@ -211,7 +215,17 @@
     top: 72px;
     left: 10px;
     color: #fff;
-    font-size: 30px;
+    font-size: 32px;
+    cursor: pointer;
+  }
+
+  #profile-toggle-description {
+    display: block;
+    position: absolute;
+    top: 105px;
+    left: 10px;
+    color: #fff;
+    font-size: 20px;
     cursor: pointer;
   }
 

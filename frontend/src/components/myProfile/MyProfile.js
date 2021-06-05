@@ -142,6 +142,12 @@ function MyProfile() {
             id={profileIsOpen ? "profile-none" : "profile-toggle"}
             onClick={() => setProfileIsOpen(!profileIsOpen)}
           />
+          <span
+            id={profileIsOpen ? "profile-none" : "profile-toggle-description"}
+            onClick={() => setProfileIsOpen(!profileIsOpen)}
+          >
+            My profile
+          </span>
           <Icon
             icon={closeFilled}
             id={profileIsOpen ? "profile-toggle" : "profile-none"}
