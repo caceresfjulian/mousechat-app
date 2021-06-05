@@ -28,3 +28,32 @@ input[type="password"] {
   color: #fff;
   font-family: "Reem Kufi", sans-serif;
 }
+
+.swal-overlay {
+  background-color: rgba(255, 255, 255, 0.397);
+}
+
+.swal-modal {
+  background-color: rgb(0, 0, 0);
+  border: 3px solid white;
+  border-radius: 25px;
+}
+
+.swal-text {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.swal-title {
+  color: #fff;
+}
+
+.swal-button {
+  padding: 15px 25px;
+  border-radius: 7px;
+  background-color: #ffffff;
+  color: black;
+  font-size: 12px;
+  border: 1px solid #ffffff;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+}
