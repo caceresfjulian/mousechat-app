@@ -12,7 +12,7 @@ function LoadingComp() {
       viewBox="0 0 100 100"
       enableBackground="new 0 0 0 0"
       xml="preserve"
-      style={{ width: "30%" }}
+      style={{ width: "247px" }}
     >
       <path
         fill="#fff"

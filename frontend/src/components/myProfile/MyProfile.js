@@ -15,7 +15,7 @@ import userAvatarFilled from "@iconify/icons-carbon/user-avatar-filled";
 import flagIcon from "@iconify/icons-akar-icons/flag";
 import closeFilled from "@iconify/icons-carbon/close-filled";
 import swal from "sweetalert";
-import LoadingPage from "../loadingPage/LoadingPage";
+import LoadingComp from "../loadingPage/LoadingComp";
 
 // La información debe ser solicitada al backend.
 
@@ -263,7 +263,7 @@ function MyProfile() {
       </>
     );
   } else {
-    return <LoadingPage />;
+    return <LoadingComp />;
   }
 }
 
