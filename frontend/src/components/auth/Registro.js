@@ -7,6 +7,9 @@ import swal from "sweetalert";
 import FormNotImg from "./FormNotImg";
 import FormImg from "./FormImg";
 import "./Registro.css";
+import LoadingComp from "../loadingPage/LoadingComp";
+
+const RegistroImg = React.lazy(() => import("./RegistroImg"));
 
 function Registro() {
   const [email, setEmail] = useState("");
@@ -73,9 +76,9 @@ function Registro() {
     //Creamos una encuesta común.
     return (
       <div id="register-container">
-        <Fade duration={1000}>
-          <div id="register-left" />
-        </Fade>
+        <React.Suspense fallback={<LoadingComp />}>
+          <RegistroImg />
+        </React.Suspense>
         <div id="register-right">
           <FormImg
             registrar={registrar}
