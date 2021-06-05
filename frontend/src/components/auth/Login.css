@@ -1,56 +1,55 @@
 #login-container {
-    padding: 62px 0 0 0;
-    background-image: url('../home/home-banner.png');
-    height: 100%;
+  padding: 62px 0 0 0;
+  background-image: url("../home/home-banner-compressed.webp");
+  height: 100%;
 }
 
 #login-title {
-    margin: 0 15%;
+  margin: 0 15%;
 }
 
 #login-form {
-    width: 25%;
-    background-color: #121212;
-    padding: 20px;
-    border: 4px solid #FFFFFF;
-    border-radius: 25px;
-    background-image: url('./login-form-bg.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-origin: content-box;
-    background-position: center;
+  width: 25%;
+  background-color: #121212;
+  padding: 20px;
+  border: 4px solid #ffffff;
+  border-radius: 25px;
+  background-image: url("./login-form-bg.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  background-position: center;
 }
 
 .login-input {
-    background: none;
-    border: 4px solid #ffffff;
-    box-sizing: border-box;
-    border-radius: 30px;
-    width: 100%;
-    padding: 5px;
-    padding-left: 15px;
-    margin-bottom: 20px;
+  background: none;
+  border: 4px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 30px;
+  width: 100%;
+  padding: 5px;
+  padding-left: 15px;
+  margin-bottom: 20px;
 }
 
 #login-form button {
-    color: #000;
-    background: linear-gradient(180deg, #FFFFFF 0%, #717171 100%);
-    width: 50%;
-    border-radius: 10px;
-    padding: 0.5rem 1.5rem;
-    color: #000;
-    cursor: pointer;
+  color: #000;
+  background: linear-gradient(180deg, #ffffff 0%, #717171 100%);
+  width: 50%;
+  border-radius: 10px;
+  padding: 0.5rem 1.5rem;
+  color: #000;
+  cursor: pointer;
 }
 
-
 @media screen and (max-width: 1050px) {
-    #login-form {
-        width: 40%
-    }
+  #login-form {
+    width: 40%;
+  }
 }
 
 @media screen and (max-width: 600px) {
-    #login-form {
-        width: 70%
-    }
+  #login-form {
+    width: 70%;
+  }
 }

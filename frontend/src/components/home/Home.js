@@ -4,9 +4,6 @@ import Fade from "react-reveal/Fade";
 import Flip from "react-reveal/Flip";
 import "./Home.css";
 import profile from "./profile_compressed.webp";
-import mern from "./MERN-logo.png";
-import figma from "./figma_logo.png";
-import socket from "./socketio.png";
 import LoadingComp from "../loadingPage/LoadingComp";
 
 const Mockup = React.lazy(() => import("./Mockup"));
