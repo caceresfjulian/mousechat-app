@@ -27,10 +27,10 @@ function Registro() {
     console.log("reader", reader);
     console.log("file", file);
     if (reader !== undefined && file !== undefined) {
-      if (file.size > 2000000) {
-        swal("Max size 2MB!", "Check the file and try again", "warning");
-      } else if (file.type !== "image/png") {
+      if (file.type !== "image/png") {
         swal("Png only", "Check the file and try again", "warning");
+      } else if (file.size > 2000000) {
+        swal("Max size 2MB!", "Check the file and try again", "warning");
       } else {
         reader.onloadend = (e) => {
           setBase64(btoa(e.target.result));
