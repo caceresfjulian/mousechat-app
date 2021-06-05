@@ -28,9 +28,13 @@ function Registro() {
     console.log("file", file);
     if (reader !== undefined && file !== undefined) {
       if (file.size > 2097152) {
-        alert("Verifique el archivo e intente de nuevo.");
+        swal("Max size 2mb!", "Check the file and try again", "warning");
       } else if (file.type !== "image/png") {
-        alert("Verifique la extensión del archivo e intente de nuevo.");
+        swal(
+          "Fill the form",
+          "Provide all the required information",
+          "warning"
+        );
       } else {
         reader.onloadend = (e) => {
           setBase64(btoa(e.target.result));
