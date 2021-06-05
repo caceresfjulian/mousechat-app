@@ -85,7 +85,7 @@ function MyProfile() {
     const reader = new FileReader();
     if (reader !== undefined && file !== undefined) {
       if (file.size > 2097152) {
-        alert("Verifique el archivo e intente de nuevo.");
+        swal("Verifique el archivo e intente de nuevo.");
       } else if (file.type !== "image/png") {
         alert("Verifique la extensión del archivo e intente de nuevo.");
       } else {
