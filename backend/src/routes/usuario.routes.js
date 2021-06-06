@@ -1,75 +1,61 @@
 const router = require("express").Router();
-//requerimos la funcion router de express.
+//Require the express' router method.
 const User = require("../models/usuario.models");
-//Almacenamos en una constante el modelo de usuario.
+//Require user's model.
 const bcrypt = require("bcryptjs");
-//Requerimos el bcrypt para encriptar.
+//Require bcrypt to encrypt the passwords. npm i bcryptjs
 const jwt = require("jsonwebtoken");
-//Requerimos JSONWebToken para manejar el loggeo de usuarios. Recuerda crear una variable de entorno con...
-//...una contraseña para jwt.
+//Require JSONWebToken to handle login. There's a env var with a JWT password.
 
-//NOTA: Para encriptar (hash) las contraseñas (passwordHash) se utilizará el paquete BCrypt.
-//Este debe ser instalado usando el comando npm i bcryptjs
-
-//REGISTRO DE USUARIO CON LOGGEO AUTOMÁTICO
+//REGISTER A USER AND GET AUTO LOGGED IN
 router.post("/", async (req, res) => {
-  //Definimos directamente, sin controlador,  qué se hará en caso de post. Esto podría ser puesto en...
-  //...la carpeta controllers para mayor modularidad.
+  //Define the logic for the HTTP verb and route. We could create a controller's folder and keep this there.
   try {
     const { email, password, passwordVerify, base64 } = req.body;
 
     if (base64) console.log(email, password);
-    //Desestructuración del cuerpo de la solicitud que será enviada en formato JSON. (Esto lo probamos
-    //...enviando una solicitud desde POSTMAN con cuerpo en formato JSON y haciendo console.log).
+    //Destructuring req.body, that's JSON format. Just in case, I tested it with a POSTMAN req with a body in JSON and console loggin.
 
-    //validación
+    //Validation
     if (!email || !password || !passwordVerify || !base64) {
-      //Si no hay email o ps o psv, devolver mensaje.
       return res.status(400).json({
-        mensajeError: "Por favor ingrese todos los datos requeridos.",
+        mensajeError: "Fill out all the required information",
       });
     }
 
     if (password.length < 6) {
-      //Si la contraseña no cumple con una extensión, devolver mensaje.
       return res.status(400).json({
-        mensajeError:
-          "Por favor ingrese una contraseña de mínimo 6 caracteres.",
+        mensajeError: "Provide a 6 characteres password minimum.",
       });
     }
 
     if (password !== passwordVerify) {
-      //Si la contraseña no coincide con su verificación, devolver mensaje.
       return res.status(400).json({
-        mensajeError: "Por favor ingrese la misma contraseña dos veces.",
+        mensajeError: "Check the password is written twice to verify it.",
       });
     }
 
     const usuarioExistente = await User.findOne({ email });
-    //Vamos a verificar si existe un usuario con el mismo correo gracias al modelo de usuario y el...
-    //...método .findOne({}) al que le pasamos el correo, significando email:email.
+    //Verify if there's a user with the same email, using the user's model and the method .findOne({}).
 
     if (usuarioExistente) {
-      //si el usuario existe con ese correo, devolver mensaje.
       return res.status(400).json({
-        mensajeError: "Una cuenta con dicho correo ya existe.",
+        mensajeError: "There's already a user with the email provided.",
       });
     }
 
-    //Aquí vamos a encriptar las contraseñas.
-    //NOTA: Estas funciones son ASÍNCRONAS, es decir, se requiere el AWAIT la creación de cada const.
+    //Encrypting the password. Async function.
     const salt = await bcrypt.genSalt();
-    //Se crea algo llamado 'salt'. No sé para qué sirve, pero se necesita.
+    //First: Create a 'salt' with the .genSalt() method.
     const passwordHash = await bcrypt.hash(password, salt);
-    //Aquí se almacena en una constante la contraseña encriptada gracias al método .hash.
+    //Generate the passwordHash with the .hash.() method.
 
+    //Even though I didn't use this information in the front-end, might be useful to keep it in the DB.
     const last_connection = new Date();
 
     const created = last_connection;
-    // Generar fecha de conexión
 
-    //Guardar usuario y contraseña encriptada en la base de datos.
-
+    //Store user's info in DB.
     const nuevoUsuario = new User({
       email,
       passwordHash,
@@ -79,11 +65,11 @@ router.post("/", async (req, res) => {
       country: "",
       last_connection,
       created,
-      //Solo se pone email y passwordHash, ya que ellos han sido previamente definidos.
+      //The bio and country have a default value of an empty string.
     });
 
     const usuarioGuardado = await nuevoUsuario.save();
-    //Utilizamos el modelo con el método save. Funcion asíncrona.
+    //Store user's info with .save() method. Async function.
 
     //Loggear al usuario
     //Para validar el loggeo del usuario, generaremos un JSON Web Token (JWT.io)
