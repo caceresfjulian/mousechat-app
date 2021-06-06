@@ -42,9 +42,11 @@ function MyProfile() {
   };
 
   async function solicitarPerfil() {
-    await axios
-      .get("http://localhost:4000/myprofile")
-      .then((res) => setValidProfile(res.data));
+    await axios.get("http://localhost:4000/myprofile").then((res) => {
+      setValidProfile(res.data);
+      swal("Updated!", "Check your new info.", "success");
+    });
+    setBase64(false);
   }
 
   async function actualizarPerfil(e) {
@@ -75,9 +77,16 @@ function MyProfile() {
         };
         await axios
           .post("http://localhost:4000/myprofile", newData)
-          .then(() => solicitarPerfil())
-          .then(() => setBase64(false))
-          .then(swal("Updated", "Your profile was updated!", "success"));
+          .then(
+            setTimeout(() => {
+              solicitarPerfil();
+            }, 3000)
+          )
+          .then(
+            swal("Loading", "Wait a moment please", "warning", {
+              button: false,
+            })
+          );
       }
     } catch (error) {
       console.log(error);
