@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-//Importamos mongoose para crear la conexión a la base de datos y administrarla.
+//Require Mongoose to create the DB connection.
 
 URI = process.env.URI;
-//Esta es la dirección de la base de datos. En caso de haberla creado en la nube, esta dirección debe cambiar.
+//DB's url.
 
 mongoose
   .connect(URI, {
@@ -11,12 +11,12 @@ mongoose
     useCreateIndex: true,
     useFindAndModify: false,
   })
-  //Opciones de conexión a la base de datos requeridas por mongoose.
+  //Connection parameters required by Mongoose.
 
   .then((db) => console.log("Connected to MongoDB."))
-  //Aquí se resuelve la promesa de .connect con un .then, donde el evento es la respuesta de la db.
+  //Console message after the connection is done.
   .catch((err) => console.error(err));
-//Aquí se controla el error para que sea mostrado por consola.
+//Handle the erry just in case it doesn't work.
 
 module.exports = mongoose;
-//Exportamos mongoose.
+//Export Mongoose.
