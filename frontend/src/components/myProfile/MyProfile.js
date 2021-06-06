@@ -45,7 +45,6 @@ function MyProfile() {
     await axios
       .get("http://localhost:4000/myprofile")
       .then((res) => setValidProfile(res.data));
-    setBase64("");
   }
 
   async function actualizarPerfil(e) {
@@ -74,9 +73,11 @@ function MyProfile() {
           edit,
           newValue,
         };
-        await axios.post("http://localhost:4000/myprofile", newData);
-        solicitarPerfil();
-        swal("Updated", "Your profile was updated!", "success");
+        await axios
+          .post("http://localhost:4000/myprofile", newData)
+          .then(() => solicitarPerfil())
+          .then(() => setBase64(false))
+          .then(swal("Updated", "Your profile was updated!", "success"));
       }
     } catch (error) {
       console.log(error);
