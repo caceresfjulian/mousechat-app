@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-//requerimos mongoose para crear el esquema y el modelo de usuario.
+//Require Mongoose to create the user's model and schema.
 
 const usuarioSchema = new mongoose.Schema({
-  //definimos las características de los usuarios, de la forma que serán almacenados en la db.
+  //Define user's DB schemma.
   email: { type: String, required: true },
   passwordHash: { type: String, required: true },
   base64: { data: Buffer, type: String, required: true },
@@ -14,7 +14,7 @@ const usuarioSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model("usuario", usuarioSchema);
-//creamos el modelo de usuario.
+//Create the user's model.
 
 module.exports = User;
-//Exportamos el modelo de usuario.
+//Export the user's model.
