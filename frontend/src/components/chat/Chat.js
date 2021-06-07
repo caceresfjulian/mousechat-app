@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import queryString from "query-string";
 import io from "socket.io-client";
+import swal from "sweetalert";
 import "./Chat.css";
 import Infobar from "../infobar/Infobar";
 import Input from "../Input/Input";
@@ -19,6 +21,8 @@ const Chat = ({ location }) => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
+  const historial = useHistory();
+
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
     // Destructuramos name y room
@@ -31,7 +35,8 @@ const Chat = ({ location }) => {
     // Unir el usuario a la sala
     socket.emit("join", { name, room }, (error) => {
       if (error) {
-        alert(error);
+        swal("Error", error, "error");
+        historial.push("/dashboard");
       }
     });
 
@@ -40,7 +45,7 @@ const Chat = ({ location }) => {
 
       socket.off();
     };
-  }, [location.search]);
+  }, [location.search, historial]);
   // solo cuando cambie el ENDPOINT y location.search, se volverá a correr el useEffect
 
   useEffect(() => {
