@@ -13,29 +13,33 @@ function About() {
   // funcion para enviar el correo usando emailjs directamente desde el front-end
   const sendEmail = (e) => {
     e.preventDefault();
-
-    name.trim().length < 5 ||
-    subject.trim().length < 5 ||
-    message.trim().length < 5
-      ? swal("Error", "Fill the form before sending it.", "error")
-      : emailjs
-          .sendForm(
-            "service_63lr68f",
-            process.env.REACT_APP_EMAIL_TEMPLATE_ID,
-            e.target,
-            process.env.REACT_APP_EMAIL_USER_ID
-          )
-          .then(
-            (result) => {
-              swal("Message sent", "I'll get back to you shortly", "success");
-              setname("");
-              setsubject("");
-              setmessage("");
-            },
-            (error) => {
-              swal("Error", "Please try again", "error");
-            }
-          );
+    if (
+      name.trim().length < 5 ||
+      subject.trim().length < 5 ||
+      message.trim().length < 5
+    ) {
+      swal("Error", "Fill the form before sending it.", "error");
+    } else {
+      swal("Sending message", "Please, wait a moment", "info");
+      emailjs
+        .sendForm(
+          "service_63lr68f",
+          process.env.REACT_APP_EMAIL_TEMPLATE_ID,
+          e.target,
+          process.env.REACT_APP_EMAIL_USER_ID
+        )
+        .then(
+          (result) => {
+            swal("Message sent", "I'll get back to you shortly", "success");
+            setname("");
+            setsubject("");
+            setmessage("");
+          },
+          (error) => {
+            swal("Error", "Please try again", "error");
+          }
+        );
+    }
   };
 
   return (
