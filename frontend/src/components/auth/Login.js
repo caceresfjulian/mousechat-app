@@ -23,6 +23,7 @@ function Login() {
     try {
       swal("Loading", "Please wait a moment.", "info", {
         button: false,
+        timer: 3000,
       });
       const datosLogin = {
         email,
