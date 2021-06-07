@@ -102,43 +102,52 @@ function Home() {
               </p>
             </div>
             <div id="tech-center">
-              <div
-                style={{
-                  backgroundColor: "#BC1414",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  padding: "18px",
-                  borderRadius: "20px",
-                  flexDirection: "column",
-                  boxShadow: "5px 6px 10px 0px rgba(0,0,0,0.8)",
-                  margin: "15px ",
-                }}
-              >
-                <img
-                  src={profile}
-                  style={{ borderRadius: "50%", border: "5px solid #fff" }}
-                  alt="profile"
-                  width="70%"
-                />
+              <Link to="/about">
                 <div
                   style={{
-                    backgroundColor: "#FFFFFF",
-                    padding: "0 8px",
-                    marginTop: "10px",
-                    minWidth: "150px",
-                    borderRadius: 15,
+                    backgroundColor: "#BC1414",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: "18px",
+                    borderRadius: "20px",
+                    flexDirection: "column",
+                    boxShadow: "5px 6px 10px 0px rgba(0,0,0,0.8)",
+                    margin: "15px ",
+                    cursor: "pointer",
                   }}
                 >
-                  <p style={{ margin: "5px 0", textAlign: "center" }}>
-                    Julian Caceres Florez <br />
-                    <span style={{ color: "#565656" }}>
-                      {" "}
-                      Web dev, journalist{" "}
-                    </span>
-                  </p>
+                  <img
+                    src={profile}
+                    style={{ borderRadius: "50%", border: "5px solid #fff" }}
+                    alt="profile"
+                    width="70%"
+                  />
+                  <div
+                    style={{
+                      backgroundColor: "#FFFFFF",
+                      padding: "0 8px",
+                      marginTop: "10px",
+                      minWidth: "150px",
+                      borderRadius: 15,
+                    }}
+                  >
+                    <p
+                      style={{
+                        margin: "5px 0",
+                        textAlign: "center",
+                        color: "black",
+                      }}
+                    >
+                      Julian Caceres Florez <br />
+                      <span style={{ color: "#565656" }}>
+                        {" "}
+                        Web dev, journalist{" "}
+                      </span>
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
             <div id="tech-right">
               <h2 style={{ fontWeight: 1 }}>Technologies</h2>
