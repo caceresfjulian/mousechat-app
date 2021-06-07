@@ -17,15 +17,15 @@ const TextContainer = ({ users }) => (
       >
         <h1 style={{ alignSelf: "center" }}>Online now:</h1>
         <div className="activeContainer">
-          <span>
+          <div>
             {users
               .filter((user) => users.indexOf(user) < 5)
               .map((user) => {
                 return (
-                  <span key={user.id}>
+                  <h4 key={user.id} style={{ fontWeight: "1" }}>
                     {user.name}
                     <img alt="Online Icon" src={onlineIcon} />
-                  </span>
+                  </h4>
                 );
               })}
             {users.length > 5 ? (
@@ -33,7 +33,7 @@ const TextContainer = ({ users }) => (
                 And {users.length - 5} more...
               </p>
             ) : null}
-          </span>
+          </div>
         </div>
       </div>
     ) : null}
