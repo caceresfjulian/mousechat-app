@@ -29,7 +29,7 @@ function About() {
           process.env.REACT_APP_EMAIL_USER_ID
         )
         .then(
-          (result) => {
+          () => {
             swal("Message sent", "I'll get back to you shortly", "success");
             setname("");
             setsubject("");
