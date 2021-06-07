@@ -41,7 +41,7 @@ function FormImg({
           <input
             className="register-upload-image"
             type="file"
-            accept=".png, .jpg"
+            accept=".png"
             onChange={(e) => photoUpload(e.target.files[0])}
           />
         </label>
