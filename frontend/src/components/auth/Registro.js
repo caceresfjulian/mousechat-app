@@ -47,6 +47,9 @@ function Registro() {
     // Escribimos un try catch para enviar la solicitud al backend, almacenar la info en una const.
     // Aquí podríamos usar fetch para enviar la info, pero es preferible axios por su simpleza...
     try {
+      swal("Loading", "Please wait a moment.", "info", {
+        button: false,
+      });
       const datosRegistrados = {
         email,
         password,
@@ -59,7 +62,7 @@ function Registro() {
           if (res.status === 200) {
             obtenerLoggeo().then(() => historial.push("/"));
           } else {
-            swal("Error " + String(res.status), res.data, "error");
+            swal("Error", res.data, "error");
           }
         });
       //Hay que habilitar el uso de cookies, entonces en app.js añadimos withcredentials.
