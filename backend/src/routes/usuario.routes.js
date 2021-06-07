@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
 
     //Validation
     if (!email || !password || !passwordVerify || !base64) {
-      return res.status(202).send("Fill out all the required information");
+      return res.status(202).send("Fill out all the required information.");
     }
 
     if (password.length < 6) {
