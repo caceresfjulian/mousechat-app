@@ -45,31 +45,38 @@ function Registro() {
   async function registrar(e) {
     e.preventDefault();
 
-    if (
-      email.trim().length < 8 ||
-      password.length < 8 ||
-      passwordVerify !== password ||
-      !base64
-    ) {
-      swal("Error", "Check the provided information.", "error");
-    } else {
-      // Escribimos un try catch para enviar la solicitud al backend, almacenar la info en una const.
-      // Aquí podríamos usar fetch para enviar la info, pero es preferible axios por su simpleza.
-      try {
-        const datosRegistrados = {
-          email,
-          password,
-          passwordVerify,
-          base64,
-        };
-        await axios.post("http://localhost:4000/auth", datosRegistrados);
-        //Hay que habilitar el uso de cookies, entonces en app.js añadimos withcredentials.
-        await obtenerLoggeo();
-        historial.push("/");
-      } catch (error) {
-        swal("Error", "Try again.", "error");
-      }
+    // if (
+    //   email.trim().length < 8 ||
+    //   password.length < 8 ||
+    //   passwordVerify !== password ||
+    //   !base64
+    // ) {
+    //   swal("Error", "Check the provided information.", "error");
+    // } else {
+    // Escribimos un try catch para enviar la solicitud al backend, almacenar la info en una const.
+    // Aquí podríamos usar fetch para enviar la info, pero es preferible axios por su simpleza.
+    try {
+      const datosRegistrados = {
+        email,
+        password,
+        passwordVerify,
+        base64,
+      };
+      await axios
+        .post("http://localhost:4000/auth", datosRegistrados)
+        .then((res) => {
+          if (res.status === 200) {
+            obtenerLoggeo().then(() => historial.push("/"));
+          } else {
+            swal("Error " + String(res.status), res.data, "error");
+          }
+        });
+      //Hay que habilitar el uso de cookies, entonces en app.js añadimos withcredentials.
+    } catch (error) {
+      console.log(error);
+      swal("Error", "Try again.", "error");
     }
+    // }
   }
 
   if (base64) {
