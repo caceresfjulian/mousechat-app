@@ -42,7 +42,8 @@ function Home() {
                       </clipPath>
                     </defs>
                   </svg>
-                  {/* <svg
+                  {/* ANDROID LOGO
+                  <svg
                     width="40"
                     height="40"
                     viewBox="0 0 52 60"
@@ -96,8 +97,8 @@ function Home() {
               <p>
                 MouseChat was developed in 2021 as part of my MERN (MongoDB,
                 Express, ReactJS, NodeJS) web dev portfolio, using tools like
-                Figma, Adobe .Ill and .Ps for the UI and responsive design and
-                Socket.io for the real time connection.
+                Figma, Adobe .Ill and .Ps for the responsive UI and Socket.io
+                for the real time connection.
               </p>
             </div>
             <div id="tech-center">
