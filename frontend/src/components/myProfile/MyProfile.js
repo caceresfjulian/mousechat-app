@@ -36,10 +36,10 @@ function MyProfile() {
   const [newValue, setNewValue] = useState("");
   const [base64, setBase64] = useState("");
 
-  const editOnClick = (param) => {
+  function editOnClick(param) {
     setEdit(param);
     setOverlay(true);
-  };
+  }
 
   async function solicitarPerfil() {
     await axios.get("http://localhost:4000/myprofile").then((res) => {
@@ -52,7 +52,6 @@ function MyProfile() {
   async function actualizarPerfil(e) {
     e.preventDefault();
     setOverlay(false);
-    setNewValue("");
     try {
       if (
         (newValue === "" ||
@@ -61,6 +60,7 @@ function MyProfile() {
         (edit === "username" || edit === "country")
       ) {
         swal("Oops!", "Check the required field.", "warning");
+        setNewValue("");
       } else if (
         (newValue === "" ||
           newValue.trim().length < 12 ||
@@ -68,6 +68,7 @@ function MyProfile() {
         edit === "bio"
       ) {
         swal("Oops!", "Check the required field.", "warning");
+        setNewValue("");
       } else {
         swal("Loading...", "Wait a moment, please", "info", { button: false });
         const newData = {
@@ -75,6 +76,7 @@ function MyProfile() {
           edit,
           newValue,
         };
+        setNewValue("");
         await axios
           .post("http://localhost:4000/myprofile", newData)
           .then(
