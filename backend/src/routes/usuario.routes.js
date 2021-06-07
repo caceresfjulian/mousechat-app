@@ -18,30 +18,26 @@ router.post("/", async (req, res) => {
 
     //Validation
     if (!email || !password || !passwordVerify || !base64) {
-      return res.status(400).json({
-        mensajeError: "Fill out all the required information",
-      });
+      return res.status(202).send("Fill out all the required information");
     }
 
     if (password.length < 6) {
-      return res.status(400).json({
-        mensajeError: "Provide a 6 characteres password minimum.",
-      });
+      return res.status(202).send("Provide a 6 characteres password minimum.");
     }
 
     if (password !== passwordVerify) {
-      return res.status(400).json({
-        mensajeError: "Check the password is written twice to verify it.",
-      });
+      return res
+        .status(202)
+        .send("Check the password is written twice to verify it.");
     }
 
     const usuarioExistente = await User.findOne({ email });
     //Verify if there's a user with the same email, using the user's model and the method .findOne({}).
 
     if (usuarioExistente) {
-      return res.status(400).json({
-        mensajeError: "There's already a user with the email provided.",
-      });
+      return res
+        .status(202)
+        .send("There's already a user with the email provided.");
     }
 
     //Encrypting the password. Async function.
