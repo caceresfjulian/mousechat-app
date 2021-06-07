@@ -23,7 +23,6 @@ function Login() {
     try {
       swal("Loading", "Please wait a moment.", "info", {
         button: false,
-        timer: 3000,
       });
       const datosLogin = {
         email,
@@ -34,6 +33,7 @@ function Login() {
         .post("http://localhost:4000/auth/login", datosLogin)
         .then((res) => {
           if (res.status === 200) {
+            swal("Logged in", "Enjoy your visit!", "success");
             obtenerLoggeo().then(() => historial.push("/dashboard"));
           } else {
             swal("Error", res.data, "error");
