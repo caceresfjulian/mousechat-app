@@ -18,27 +18,30 @@ function Login() {
   //Definimos una función ASÍNCRONA para el onSubmit del form
   async function loggeo(e) {
     e.preventDefault();
-    if (email.trim().length < 8 || password.length < 8) {
-      swal("Error", "Fill the form and try again.", "error");
-    } else {
-      // Escribimos un try catch para enviar la solicitud al backend, almacenar la info en una const.
-      // Aquí podríamos usar fetch para enviar la info, pero es preferible axios por su simpleza.
-      try {
-        const datosLogin = {
-          email,
-          password,
-        };
+    // Escribimos un try catch para enviar la solicitud al backend, almacenar la info en una const.
+    // Aquí podríamos usar fetch para enviar la info, pero es preferible axios por su simpleza.
+    try {
+      const datosLogin = {
+        email,
+        password,
+      };
 
-        await axios.post("http://localhost:4000/auth/login", datosLogin);
-        //Hay que habilitar el uso de cookies, entonces en app.js añadimos withcredentials.
+      await axios
+        .post("http://localhost:4000/auth/login", datosLogin)
+        .then((res) => {
+          if (res.status === 200) {
+            obtenerLoggeo().then(() => historial.push("/dashboard"));
+          } else {
+            swal("Error " + String(res.status), res.data, "error");
+          }
+        });
+      //Hay que habilitar el uso de cookies, entonces en app.js añadimos withcredentials.
 
-        await obtenerLoggeo();
-        historial.push("/dashboard");
-        //Añadimos de nuevo esto para actualizar el contexto y redireccionar.
-      } catch (error) {
-        swal("Error", "Check the provided information", "error");
-      }
+      //Añadimos de nuevo esto para actualizar el contexto y redireccionar.
+    } catch (error) {
+      swal("Error", "Check the provided information", "error");
     }
+    // }
   }
 
   const dummyAccount = () => {
