@@ -14,11 +14,10 @@ function AuthContextProvider(props) {
   const [profileIsOpen, setProfileIsOpen] = useState(false);
 
   async function obtenerLoggeo() {
-    const respuestaLoggeo = await axios.get(
-      "http://localhost:4000/auth/loggedIn"
-    );
-    setLoggedIn(respuestaLoggeo.data.value);
-    setemailCheck(respuestaLoggeo.data.email);
+    await axios.get("http://localhost:4000/auth/loggedIn").then((res) => {
+      setLoggedIn(res.data.value);
+      setemailCheck(res.data.email);
+    });
   }
 
   useEffect(() => {
