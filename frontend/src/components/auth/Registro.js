@@ -24,8 +24,8 @@ function Registro() {
   // Función para interpretar la imagen recién subida, mostrarla en pantalla y almacenarla en base64
   function photoUpload(file) {
     const reader = new FileReader();
-    console.log("reader", reader);
-    console.log("file", file);
+    // console.log("reader", reader);
+    // console.log("file", file);
     if (reader !== undefined && file !== undefined) {
       if (file.type !== "image/png") {
         swal("Png only", "Check the file and try again", "warning");
@@ -67,7 +67,7 @@ function Registro() {
         });
       //Hay que habilitar el uso de cookies, entonces en app.js añadimos withcredentials.
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       swal("Error", "Try again.", "error");
     }
     // }
