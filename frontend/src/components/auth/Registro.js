@@ -44,15 +44,6 @@ function Registro() {
   //Definimos una función ASÍNCRONA para el onSubmit del form
   async function registrar(e) {
     e.preventDefault();
-
-    // if (
-    //   email.trim().length < 8 ||
-    //   password.length < 8 ||
-    //   passwordVerify !== password ||
-    //   !base64
-    // ) {
-    //   swal("Error", "Check the provided information.", "error");
-    // } else {
     // Escribimos un try catch para enviar la solicitud al backend, almacenar la info en una const.
     // Aquí podríamos usar fetch para enviar la info, pero es preferible axios por su simpleza.
     try {
