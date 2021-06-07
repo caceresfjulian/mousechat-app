@@ -118,17 +118,13 @@ router.post("/login", async (req, res) => {
 
     if (!email || !password) {
       //Sólo validaremos que si no hay email o ps, devolver mensaje.
-      return res.status(400).json({
-        mensajeError: "Por favor ingrese todos los datos requeridos.",
-      });
+      return res.status(202).send("Please fill all the required information.");
     }
 
     const usuarioExistente = await User.findOne({ email });
     //Almacenamos el usuario existente en una const, resultado de la búsqueda con el modelo y el email provisto
     if (!usuarioExistente) {
-      return res
-        .status(401)
-        .json({ mensajeError: "Email o contraseña incorrectos." });
+      return res.status(202).send("Wrong email or password.");
       //Damos un mensaje de error genérico. Estos mensajes podrían estar almacenados en un archivo aparte y ser importados.
     }
 
@@ -138,9 +134,7 @@ router.post("/login", async (req, res) => {
     );
     //Almacenamos en una const el passwordCorrecto al comparar con bcrypt el password provisto y el existente en el usuario
     if (!passwordCorrecto) {
-      return res
-        .status(401)
-        .json({ mensajeError: "Email o constraseña incorrectos." });
+      return res.status(202).send("Wrong email or password.");
       //Damos un mensaje de error genérico.
     }
 
