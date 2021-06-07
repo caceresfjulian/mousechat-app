@@ -45,7 +45,7 @@ function Registro() {
   async function registrar(e) {
     e.preventDefault();
     // Escribimos un try catch para enviar la solicitud al backend, almacenar la info en una const.
-    // Aquí podríamos usar fetch para enviar la info, pero es preferible axios por su simpleza.
+    // Aquí podríamos usar fetch para enviar la info, pero es preferible axios por su simpleza...
     try {
       const datosRegistrados = {
         email,
