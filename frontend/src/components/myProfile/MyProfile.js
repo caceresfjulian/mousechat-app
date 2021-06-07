@@ -98,10 +98,10 @@ function MyProfile() {
   function photoUpload(file) {
     const reader = new FileReader();
     if (reader !== undefined && file !== undefined) {
-      if (file.size > 2097152) {
-        swal("Verifique el archivo e intente de nuevo.");
+      if (file.size > 2000000) {
+        swal("Max size 2MB!", "Check the file and try again", "warning");
       } else if (file.type !== "image/png") {
-        alert("Verifique la extensión del archivo e intente de nuevo.");
+        swal("Png only", "Check the file and try again", "warning");
       } else {
         reader.onloadend = (e) => {
           setBase64(btoa(e.target.result));
