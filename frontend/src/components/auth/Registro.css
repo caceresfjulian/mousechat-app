@@ -83,8 +83,11 @@
     display: none;
   }
   #register-right {
-    background-color: #121212;
-    /* background: repeating-linear-gradient(
+    background-image: url("./register-bnw-compressed-smaller.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    /*background-color: #121212;
+     background: repeating-linear-gradient(
       45deg,
       #1b1b1b,
       #1b1b1b 5px,
