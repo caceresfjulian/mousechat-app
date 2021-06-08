@@ -14,7 +14,7 @@ let socket;
 const ENDPOINT = "localhost:4000";
 
 const Chat = ({ location }) => {
-  // gracias al router tenemos acceso a location que nos da la URL actual de la página
+  //Using Router, location shows the current browser's URL.
   const [name, setname] = useState("");
   const [room, setroom] = useState("");
   const [users, setUsers] = useState("");
@@ -25,14 +25,13 @@ const Chat = ({ location }) => {
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
-    // Destructuramos name y room
 
     socket = io(ENDPOINT);
 
     setname(name);
     setroom(room);
 
-    // Unir el usuario a la sala
+    //Join the user to the room
     socket.emit("join", { name, room }, (error) => {
       if (error) {
         swal("Error", error, "error");
@@ -46,7 +45,6 @@ const Chat = ({ location }) => {
       socket.off();
     };
   }, [location.search, historial]);
-  // solo cuando cambie el ENDPOINT y location.search, se volverá a correr el useEffect
 
   useEffect(() => {
     socket.on("message", (message) => {
@@ -58,7 +56,7 @@ const Chat = ({ location }) => {
     });
   }, [messages]);
 
-  // Función para enviar mensajes
+  //Send message
   const sendMessage = (e) => {
     e.preventDefault();
     if (message) {
