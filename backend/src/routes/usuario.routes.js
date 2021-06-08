@@ -67,15 +67,14 @@ router.post("/", async (req, res) => {
     const usuarioGuardado = await nuevoUsuario.save();
     //Store user's info with .save() method. Async function.
 
-    //Loggear al usuario
-    //Para validar el loggeo del usuario, generaremos un JSON Web Token (JWT.io)
-    //NOTA: se debe instalar el paquete correspondiente. npm i jsonwebtoken
-    /*Información sobre el Json Web Token: Este posee 3 partes. primeraparte.segundaparte.terceraparte
-        En la primera parte se habla del algoritmo y el tipo: "alg": "HS256" y tipo "typ": "JWT". Este es un estándar.
-        En la segunda parte se almacena el 'payload', información del usuario a loggear.
-        La tercera parte es la más importante. La firma verificada (verified signature). En ella debemos 
-        pasar una contraseña que sólo el servidor va a conocer y así sólo este podrá validar el loggeo.
-        */
+    //Login the user
+    //Generate a JSON Web Token (JWT.io)  "npm i jsonwebtoken".
+    /*Extra info about JWT: It has 3 parts in the following structure: firstpart.secondpart.thirdpart
+    First part: Algorithm and type: "alg": "HS256". "typ": "JWT". It's standard.
+    Second part: Payload. User's information.
+    Third part: It's the most important. verified signature. It's a pw known only by the 
+    server in order to validate the token. 
+    */
 
     const token = jwt.sign(
       {
@@ -84,17 +83,10 @@ router.post("/", async (req, res) => {
       },
       process.env.JWT_SECRET
     );
-    //Consiguiendo el token.
+    //Get the token and keep it in a cookie to use it along the sesh. I'ts better than the local storage for security reasons.
+    //It's an httpOnly cookie. It's more secure. This cookie has a string with all the info shared from fron to back.
 
-    /*Después de generar este token, debemos conservarlo en el navegador a lo largo de la sesión, por
-        ello se utiliza una cookie. También podría utilizarse el local storage del navegador, pero esta opción
-        no se utilizar por seguridad, ya que alguien podría robar la cookie y suplatar a otro usuario. 
-        En vez, utilizamos una httpOnly cookie, ya que incluso las cookies convencionales pueden ser accedidas
-        corriendo un javascript en el navegador. La cookie es un string que contiene información que sólo será
-        compartida por el front hacia el back y viceversa con cada solicitud y respuesta. 
-        */
-
-    // Enviar el token en una HttpOnly cookie. Ojo a la opción HttpOnly. Después se incluirán otras características en el deployment.
+    // Send the token in a HTTPonly cookie. During the deployment, this will have other features.
 
     res
       .cookie("token", token, {
@@ -102,7 +94,7 @@ router.post("/", async (req, res) => {
       })
       .send();
 
-    //En POSTMAN se debe ver la cookie recibida, ella mostrará la ruta '/' y el httpOnly: true. Enviamos un status de 200 OK al enviar la cookie.
+    //Check it with POSTMAN. See the cookie with the route '/' and the httpOnly: true. Send 200ok status.
   } catch (err) {
     console.error(err);
     res.status(500).send();
@@ -111,31 +103,30 @@ router.post("/", async (req, res) => {
 
 //LOGIN
 router.post("/login", async (req, res) => {
-  //Este post iría dirigido a otra dirección: /login, dentro de /auth.
   try {
     const { email, password } = req.body;
-    //Destructuramos el cuerpo de la solicitud. Sólo habrá email y password.
 
     if (!email || !password) {
-      //Sólo validaremos que si no hay email o ps, devolver mensaje.
+      //Validation
       return res.status(202).send("Please fill all the required information.");
     }
 
     const usuarioExistente = await User.findOne({ email });
-    //Almacenamos el usuario existente en una const, resultado de la búsqueda con el modelo y el email provisto
+
+    // If there's no account with that email, error.
     if (!usuarioExistente) {
       return res.status(202).send("Wrong email or password.");
-      //Damos un mensaje de error genérico. Estos mensajes podrían estar almacenados en un archivo aparte y ser importados.
     }
 
+    //Compare provided password and pwHash
     const passwordCorrecto = await bcrypt.compare(
       password,
       usuarioExistente.passwordHash
     );
-    //Almacenamos en una const el passwordCorrecto al comparar con bcrypt el password provisto y el existente en el usuario
+
+    //Wrong password
     if (!passwordCorrecto) {
       return res.status(202).send("Wrong email or password.");
-      //Damos un mensaje de error genérico.
     }
 
     const token = jwt.sign(
@@ -145,14 +136,14 @@ router.post("/login", async (req, res) => {
       },
       process.env.JWT_SECRET
     );
-    //Consiguiendo el token del usuario existente.
+    //Get the token's information
 
-    // Actualizar última conexión
+    // Update last connection
     const time = new Date();
     usuarioExistente.last_connection = time;
     await usuarioExistente.save();
 
-    //Enviar el token en una HttpOnly cookie.
+    //Send the token on an HttpOnly cookie.
     res
       .cookie("token", token, {
         httpOnly: true,
@@ -172,28 +163,27 @@ router.get("/logout", (req, res) => {
       expires: new Date(0),
     })
     .send();
-  //En caso de no poder eliminar la cookie, vamos a enviar otra con el mismo nombre pero vacía y
-  //ya vencida, para que el navegador la elimine de inmediato. POSTMAN va a eliminar la cookie automáticamente.
+  //Instead of deleting the cooking, send a new one with the same name but expired.
+  //The browser will delete it right away. If checking with POSTMAN, it'll delete it as well.
 });
 
-//MOSTRAR CONDICIONALMENTE PÁGINAS, DEPENDIENDO DEL TOKEN DE LOGGEO.
+//CONDITIONAL PAGE RENDERING, DEPENDING ON THE TOKEN
 router.get("/loggedIn", (req, res) => {
-  //esta ruta es MUY parecida al middleware de autenticación.
+  //Similar to auth middleware
   try {
     const token = req.cookies.token;
     if (!token) {
       return res.json({ value: false }).status(401);
     }
-    //cambiamos por falsa la respuesta en formato JSON
+    //Send false value as JSON.
 
     jwt.verify(token, process.env.JWT_SECRET);
-    //No es necesario el user ni el next.
+    //next() is not required.
 
     const { payload } = jwt.decode(token, { complete: true });
     const { email } = payload;
 
     res.json({ email, value: true });
-    // .send(true);
   } catch (error) {
     res.json({ value: false }).status(401);
   }
