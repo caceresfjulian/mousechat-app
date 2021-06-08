@@ -17,10 +17,8 @@ import closeFilled from "@iconify/icons-carbon/close-filled";
 import swal from "sweetalert";
 import LoadingComp from "../loadingPage/LoadingComp";
 
-// La información debe ser solicitada al backend.
-
 function MyProfile() {
-  // Guardamos en en contexto el perfil que ha sido validado.
+  //The following information is provided by the context and, at the same time, its updated from this component
   const {
     emailCheck,
     validProfile,
@@ -30,9 +28,9 @@ function MyProfile() {
   } = useContext(AuthContext);
 
   const [overlay, setOverlay] = useState(false);
-  //Muestra u oculta la ventana de edición
+  //Toggle the editing window
   const [edit, setEdit] = useState("");
-  //Almacena el NOMBRE de la propiedad a editar, el cual es pasado al componente ventana de edición
+  //Store the name of the property to be edited
   const [newValue, setNewValue] = useState("");
   const [base64, setBase64] = useState("");
 
@@ -41,6 +39,7 @@ function MyProfile() {
     setOverlay(true);
   }
 
+  //Get the profile info
   async function solicitarPerfil() {
     await axios.get("http://localhost:4000/myprofile").then((res) => {
       setValidProfile(res.data);
@@ -49,10 +48,12 @@ function MyProfile() {
     setBase64(false);
   }
 
+  //Update profile with new bio, username or country
   async function actualizarPerfil(e) {
     e.preventDefault();
     setOverlay(false);
     try {
+      //Validating strings
       if (
         (newValue === "" ||
           newValue.trim().length < 3 ||
@@ -61,6 +62,7 @@ function MyProfile() {
       ) {
         swal("Oops!", "Check the required field.", "warning");
         setNewValue("");
+        //Validating string extension
       } else if (
         (newValue === "" ||
           newValue.trim().length < 12 ||
@@ -95,6 +97,7 @@ function MyProfile() {
     }
   }
 
+  // Validate and interprete the uploaded photo
   function photoUpload(file) {
     const reader = new FileReader();
     if (reader !== undefined && file !== undefined) {
@@ -109,7 +112,6 @@ function MyProfile() {
           setNewValue(btoa(e.target.result));
         };
         reader.readAsBinaryString(file);
-        // Esta línea es muy importante. Sin ella, no se actualizan los estados
       }
     }
   }
@@ -117,20 +119,19 @@ function MyProfile() {
   const validProfileHasChanged = useRef(false);
 
   useEffect(() => {
-    // Creamos esta función asíncrona para poder hacer uso de la referencia y evitar que corra
-    // la solicitud del código al cerrar sesión
+    //Function to avoid re rendering the component by using the ref
     async function getProfile() {
-      // Si no hay perfil validado, solicitarlo. Si lo hay, no hacer nada.
       const infoProfile = await axios.get("http://localhost:4000/myprofile");
       setValidProfile(infoProfile.data);
     }
+    //If there's no valid profile, request it.
     if (!validProfileHasChanged.current) {
       getProfile();
       validProfileHasChanged.current = true;
     }
   }, [validProfile, setValidProfile]);
 
-  // Al oprimir esc, ocultar el overlay
+  // Set a function to ESC key (hide overlay)
   const escFunction = useCallback((e) => {
     if (e.keyCode === 27) {
       setOverlay(false);
