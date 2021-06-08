@@ -11,6 +11,8 @@ function FormImg({
   setPassword,
   passwordVerify,
   setPasswordVerify,
+  imageType,
+  setimageType,
 }) {
   return (
     <div>
@@ -26,7 +28,11 @@ function FormImg({
         <h1 style={{ fontWeight: 1 }}>Register</h1>
         <label>
           <img
-            src={`data:image/png;base64,${base64}`}
+            src={
+              imageType === "image/png"
+                ? `data:image/png;base64,${base64}`
+                : `data:image/jpg;base64,${base64}`
+            }
             alt="Upload"
             style={{
               width: "120px",
@@ -41,12 +47,12 @@ function FormImg({
           <input
             className="register-upload-image"
             type="file"
-            accept=".png"
+            accept=".png, .jpg"
             onChange={(e) => photoUpload(e.target.files[0])}
           />
         </label>
         <p style={{ fontSize: "0.8em", display: "block", marginTop: 20 }}>
-          Upload a profile pic *PNG 2 MB limit
+          Upload a profile pic *PNG/JPEG 2 MB limit
         </p>
         <div className="form-background">
           <input

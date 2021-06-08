@@ -16,6 +16,7 @@ function Registro() {
   const [password, setPassword] = useState("");
   const [passwordVerify, setPasswordVerify] = useState("");
   const [base64, setBase64] = useState("");
+  const [imageType, setimageType] = useState("");
   //definimos los datos que serán capturados para ser enviados al back.
 
   const { obtenerLoggeo } = useContext(AuthContext);
@@ -24,14 +25,15 @@ function Registro() {
   // Función para interpretar la imagen recién subida, mostrarla en pantalla y almacenarla en base64
   function photoUpload(file) {
     const reader = new FileReader();
-    // console.log("reader", reader);
-    // console.log("file", file);
+    console.log("reader", reader);
+    console.log("file", file);
     if (reader !== undefined && file !== undefined) {
-      if (file.type !== "image/png") {
-        swal("Png only", "Check the file and try again", "warning");
+      if (file.type !== "image/png" && file.type !== "image/jpeg") {
+        swal("Png/Jpg only", "Check the file and try again.", "warning");
       } else if (file.size > 2000000) {
         swal("Max size 2MB!", "Check the file and try again", "warning");
       } else {
+        file.type === "image/png" ? setimageType("png") : setimageType("jpeg");
         reader.onloadend = (e) => {
           setBase64(btoa(e.target.result));
         };
@@ -92,6 +94,8 @@ function Registro() {
             setPassword={setPassword}
             passwordVerify={passwordVerify}
             setPasswordVerify={setPasswordVerify}
+            imageType={imageType}
+            setimageType={setimageType}
           />
         </div>
       </div>

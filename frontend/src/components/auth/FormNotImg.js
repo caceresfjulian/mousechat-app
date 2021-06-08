@@ -27,7 +27,7 @@ function Form_not_base64({
           <input
             className="register-upload-image"
             type="file"
-            accept=".png"
+            accept=".png, .jpg"
             onChange={(e) => photoUpload(e.target.files[0])}
           />
           <svg
@@ -49,7 +49,7 @@ function Form_not_base64({
           </svg>
         </label>
         <p style={{ fontSize: "0.8em", marginTop: 20 }}>
-          Upload a profile pic *PNG 2 MB limit
+          Upload a profile pic *PNG/JPEG 2 MB limit
         </p>
         <div className="form-background">
           <input
