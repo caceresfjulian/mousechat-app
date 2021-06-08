@@ -14,12 +14,12 @@ function Registro() {
   const [passwordVerify, setPasswordVerify] = useState("");
   const [base64, setBase64] = useState("");
   const [imageType, setimageType] = useState("");
-  //definimos los datos que serán capturados para ser enviados al back.
+  //useState to capture required information for the sign up process.
 
   const { obtenerLoggeo } = useContext(AuthContext);
   const historial = useHistory();
 
-  // Función para interpretar la imagen recién subida, mostrarla en pantalla y almacenarla en base64
+  // Authenticate the uploaded img, show it on screen and store it at base64
   function photoUpload(file) {
     const reader = new FileReader();
     // console.log("reader", reader);
@@ -35,16 +35,16 @@ function Registro() {
           setBase64(btoa(e.target.result));
         };
         reader.readAsBinaryString(file);
-        //Esta línea es muy importante. Sin ella, no se actualizan los estados
+        //This is a key line to update the states while interpreting imgs.
       }
     }
   }
 
-  //Definimos una función ASÍNCRONA para el onSubmit del form
+  //To submit the form
   async function registrar(e) {
     e.preventDefault();
-    // Escribimos un try catch para enviar la solicitud al backend, almacenar la info en una const.
-    // Aquí podríamos usar fetch para enviar la info, pero es preferible axios por su simpleza...
+    // Try-catch to send the req, store required info in a const.
+    // As well, could be Fetch but Axios is shorter.
     try {
       swal("Loading", "Please wait a moment.", "info", {
         button: false,
@@ -65,7 +65,7 @@ function Registro() {
             swal("Error", res.data, "error");
           }
         });
-      //Hay que habilitar el uso de cookies, entonces en app.js añadimos withcredentials.
+      //Should enable cookies, so at the app.js file must add withcredentials.
     } catch (error) {
       // console.log(error);
       swal("Error", "Try again.", "error");
@@ -73,8 +73,8 @@ function Registro() {
     // }
   }
 
+  // Conditional rendering (with-without uploaded img)
   if (base64) {
-    //Creamos una encuesta común.
     return (
       <div id="register-container">
         <Fade duration={1000}>
@@ -98,9 +98,7 @@ function Registro() {
       </div>
     );
   } else {
-    //Creamos una encuesta común.
     return (
-      //Añadimos a cada input el valor y hook asociado por onChange.
       <div id="register-container">
         <Fade duration={1000}>
           <div id="register-left" />
