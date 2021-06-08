@@ -16,12 +16,14 @@ ul {
   list-style: none;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 50%;
   margin: 0;
 }
 
 li {
   text-decoration: none;
+  display: flex;
 }
 
 #logout-button {
