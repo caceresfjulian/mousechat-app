@@ -2,19 +2,19 @@ import axios from "axios";
 import React, { useContext } from "react";
 import { useHistory } from "react-router";
 import AuthContext from "../context/AuthContext";
-//Creamos botón de deslogueo que utiliza la funcion obtenerLoggeo pasada por contexto desde AuthContext
+//Create Log Out button, that activates the funct "obtenerLoggeo", obtained thanks to AuthContext
 
 function LogOutBtn() {
   const { obtenerLoggeo, setValidProfile } = useContext(AuthContext);
 
   const historial = useHistory();
-  //Devuelve un array de todas las direcciones vistadas.
+  //UseHistory returns an array with all the visited locations.
 
   async function desloggeo() {
     await setValidProfile("");
     await axios.get("http://localhost:4000/auth/logout");
     await obtenerLoggeo();
-    //Para redirigir después de desloggearse, utilizamos useHistory de Router
+    //To redirect after logging out, useHistory.push().
     historial.push("/");
   }
 
