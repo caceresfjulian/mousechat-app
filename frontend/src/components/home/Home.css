@@ -106,11 +106,15 @@
     position: relative;
     display: block;
     padding-top: 30% !important;
-    margin: -25% 0 0 0;
+    margin: -36% 0 0 0;
     background-image: url("./tech_section_small.svg");
   }
   #tech h2 {
     text-align: left;
+  }
+
+  #tech-left {
+    padding: 25px 0 0 0;
   }
 
   #tech-right svg {
