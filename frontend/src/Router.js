@@ -11,7 +11,7 @@ const Registro = React.lazy(() => import("./components/auth/Registro"));
 const Dashboard = React.lazy(() => import("./components/dashboard/Dashboard"));
 const Chat = React.lazy(() => import("./components/chat/Chat"));
 
-//Aquí se crean las diferentes rutas del frontend gracias a react-router-dom.
+//Set the routes here with react-router-dom.
 
 function Router() {
   const { loggedIn } = useContext(AuthContext);
@@ -31,7 +31,7 @@ function Router() {
     };
   }, [pressF5]);
 
-  //Modifiqué este tipo de lógica para evitar la advertencia: <Route> elements should not change from controlled to uncontrolled "
+  //Conditional rendering.
   if (loggedIn === true) {
     return (
       <React.Suspense fallback={<LoadingPage />}>
