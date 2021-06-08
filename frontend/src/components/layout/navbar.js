@@ -6,13 +6,13 @@ import "./navbar.css";
 import { Icon } from "@iconify/react";
 import menuIcon from "@iconify/icons-heroicons-outline/menu";
 
-//Se crea una barra de navegación con el paquete npm i react-router-dom y su componente Link.
+//To create the navbar, its required to run 'npm i react-router-dom' y its Link component.
 
 function Navbar({ isOpen, toggle }) {
   const { loggedIn } = useContext(AuthContext);
-  //Para utilizar el contexto, debemos importar useContext y haber exportado el contexto original.
+  //To access the context data, should import useContext and export the original context.
 
-  //De esta forma se escribe el condicional para no renderizar algunos elementos de los componentes
+  //Conditional rendering depending on isOpen and toggle props
   return (
     <nav className="navbar">
       <svg width="200" viewBox="0 0 327 59" fill="none">
