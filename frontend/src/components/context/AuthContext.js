@@ -1,11 +1,10 @@
-// creamos un componente con un estado al que todos los demás componentes solicitarán una información
-// específica. En este caso, el componente dirá si el usuario está loggeado gracias a la existencia y
-// validez del token.
+// This is a component that passes data to all the app. It states the user's current authentication status
+// by accessing the token (cookie).
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
 
 const AuthContext = createContext();
-//Se crea después de la función el contexto
+//It's created after the context function
 
 function AuthContextProvider(props) {
   const [loggedIn, setLoggedIn] = useState(undefined);
@@ -38,7 +37,7 @@ function AuthContextProvider(props) {
     >
       {props.children}
     </AuthContext.Provider>
-    //se incluye aquí el componente authcontext.provider para pasar contexto
+    //Required the AuthContext.Provider to pass all the data.
   );
 }
 
