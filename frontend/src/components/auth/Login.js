@@ -10,16 +10,16 @@ import "./Login.css";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //definimos los datos que serán capturados para ser enviados al back.
+  //useState for the required data to execute the login process
 
   const { obtenerLoggeo } = useContext(AuthContext);
   const historial = useHistory();
 
-  //Definimos una función ASÍNCRONA para el onSubmit del form
+  //Async function to submit the form
   async function loggeo(e) {
     e.preventDefault();
-    // Escribimos un try catch para enviar la solicitud al backend, almacenar la info en una const.
-    // Aquí podríamos usar fetch para enviar la info, pero es preferible axios por su simpleza.
+    // Try-Catch to send http req. Keep the required info in a const.
+    // Could be Fetch as well, but Axios is shorter to write.
     try {
       swal("Loading", "Please wait a moment.", "info", {
         button: false,
@@ -39,23 +39,21 @@ function Login() {
             swal("Error", res.data, "error");
           }
         });
-      //Hay que habilitar el uso de cookies, entonces en app.js añadimos withcredentials.
-
-      //Añadimos de nuevo esto para actualizar el contexto y redireccionar.
+      //To make this work, should enable the cookies for the app in the backend.
+      //in app.js file, add withcredentials.
     } catch (error) {
       swal("Error", "Check the provided information", "error");
     }
     // }
   }
 
+  // Auto fill with the dummy account information.
   const dummyAccount = () => {
     setEmail("test@gmail.com");
     setPassword("password");
   };
 
-  //Creamos una encuesta común.
   return (
-    //Añadimos a cada input el valor y hook asociado por onChange.
     <div id="login-container">
       <div id="login-title">
         <h1 style={{ fontWeight: 1 }}>Login</h1>
