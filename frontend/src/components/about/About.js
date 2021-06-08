@@ -10,7 +10,7 @@ function About() {
   const [subject, setsubject] = useState("");
   const [message, setmessage] = useState("");
 
-  // funcion para enviar el correo usando emailjs directamente desde el front-end
+  //Send email with EMAILJS
   const sendEmail = (e) => {
     e.preventDefault();
     if (
