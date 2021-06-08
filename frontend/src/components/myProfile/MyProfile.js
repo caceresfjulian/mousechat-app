@@ -100,8 +100,8 @@ function MyProfile() {
     if (reader !== undefined && file !== undefined) {
       if (file.size > 2000000) {
         swal("Max size 2MB!", "Check the file and try again", "warning");
-      } else if (file.type !== "image/png") {
-        swal("Png only", "Check the file and try again", "warning");
+      } else if (file.type !== "image/png" && file.type !== "image/jpeg") {
+        swal("Png/Jpg only", "Check the file and try again", "warning");
       } else {
         reader.onloadend = (e) => {
           setBase64(btoa(e.target.result));
@@ -183,7 +183,7 @@ function MyProfile() {
                 <input
                   className="register-upload-image"
                   type="file"
-                  accept=".png"
+                  accept=".png, .jpg"
                   onChange={(e) => photoUpload(e.target.files[0])}
                 />
               </label>
