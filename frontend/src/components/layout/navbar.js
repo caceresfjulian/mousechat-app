@@ -82,37 +82,30 @@ function Navbar({ isOpen, toggle }) {
       {loggedIn === false && (
         <>
           <ul className={isOpen ? "responsive-navbar" : ""}>
-            <li>
-              <Link to="/" onClick={toggle}>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/about" onClick={toggle}>
-                About
-              </Link>
-            </li>
-            <li>
-              <Link to="/Login" onClick={toggle}>
-                Log in
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="navigation-button"
-                to="/register"
-                onClick={toggle}
-              >
-                Sign up
-              </Link>
-            </li>
-            <Icon
-              icon={menuIcon}
-              style={{ color: "#fff", fontSize: "1.5rem", cursor: "pointer" }}
-              id="menu-icon"
-              onClick={toggle}
-            />
+            <Link to="/" onClick={toggle}>
+              <li>Home</li>
+            </Link>
+            <Link to="/about" onClick={toggle}>
+              <li>About</li>
+            </Link>
+            <Link to="/Login" onClick={toggle}>
+              <li>Log in</li>
+            </Link>
+            <Link className="navigation-button" to="/register" onClick={toggle}>
+              <li>Sign up</li>
+            </Link>
           </ul>
+          <Icon
+            icon={menuIcon}
+            style={{
+              color: "#fff",
+              fontSize: "1.5rem",
+              cursor: "pointer",
+              zIndex: "100",
+            }}
+            id="menu-icon"
+            onClick={toggle}
+          />
         </>
       )}
       {loggedIn === true && (

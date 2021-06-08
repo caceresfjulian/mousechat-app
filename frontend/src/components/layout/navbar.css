@@ -47,8 +47,12 @@ li {
     border: 1px solid white;
   }
   .navbar ul {
-    width: unset;
     z-index: 10;
+    width: 100%;
+    padding: 0;
+    position: absolute;
+    top: 62px;
+    left: 0;
   }
   #menu-icon {
     display: block;
@@ -69,9 +73,17 @@ li {
     padding-top: 15px;
     background-color: #121212;
     padding: 10px 20px;
+    font-size: 1.2rem;
   }
+  .responsive-navbar li:focus {
+    background-color: rgb(59, 59, 59);
+  }
+
   .navigation-button {
     background: none;
     color: #fff;
+    margin: 0;
+    padding: 0;
+    border-radius: none;
   }
 }
