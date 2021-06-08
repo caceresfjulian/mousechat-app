@@ -304,9 +304,9 @@ function About() {
             <div id="about-me">
               <p>
                 A 25 year old Colombian web developer, based in Bogota,
-                passionate about technology, music and reading. In 2019, I
-                discover how great is to write code and, since then, I’ve been
-                enjoying this amazing journey in the tech industry.
+                passionate about web dev, graphic design, photography and music.
+                In 2019, I discover how great is to write code and, since then,
+                I’ve been enjoying this amazing journey in the tech industry.
               </p>
               <div id="me-pill">
                 <img
