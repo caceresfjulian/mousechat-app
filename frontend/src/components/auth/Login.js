@@ -30,7 +30,7 @@ function Login() {
       };
 
       await axios
-        .post("http://localhost:4000/auth/login", datosLogin)
+        .post("https://mousechat-mern.herokuapp.com/auth/login", datosLogin)
         .then((res) => {
           if (res.status === 200) {
             swal("Logged in", "Enjoy your visit!", "success");

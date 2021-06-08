@@ -12,7 +12,7 @@ function LogOutBtn() {
 
   async function desloggeo() {
     await setValidProfile("");
-    await axios.get("http://localhost:4000/auth/logout");
+    await axios.get("https://mousechat-mern.herokuapp.com/auth/logout");
     await obtenerLoggeo();
     //To redirect after logging out, useHistory.push().
     historial.push("/");

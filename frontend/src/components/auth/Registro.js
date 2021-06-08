@@ -56,7 +56,7 @@ function Registro() {
         base64,
       };
       await axios
-        .post("http://localhost:4000/auth", datosRegistrados)
+        .post("https://mousechat-mern.herokuapp.com/auth", datosRegistrados)
         .then((res) => {
           if (res.status === 200) {
             swal("Logged in", "Enjoy your visit!", "success");

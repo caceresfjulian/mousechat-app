@@ -41,10 +41,12 @@ function MyProfile() {
 
   //Get the profile info
   async function solicitarPerfil() {
-    await axios.get("http://localhost:4000/myprofile").then((res) => {
-      setValidProfile(res.data);
-      swal("Updated!", "Check your new info.", "success");
-    });
+    await axios
+      .get("https://mousechat-mern.herokuapp.com/myprofile")
+      .then((res) => {
+        setValidProfile(res.data);
+        swal("Updated!", "Check your new info.", "success");
+      });
     setBase64(false);
   }
 
@@ -80,7 +82,7 @@ function MyProfile() {
         };
         setNewValue("");
         await axios
-          .post("http://localhost:4000/myprofile", newData)
+          .post("https://mousechat-mern.herokuapp.com/myprofile", newData)
           .then(
             setTimeout(() => {
               solicitarPerfil();
@@ -121,7 +123,9 @@ function MyProfile() {
   useEffect(() => {
     //Function to avoid re rendering the component by using the ref
     async function getProfile() {
-      const infoProfile = await axios.get("http://localhost:4000/myprofile");
+      const infoProfile = await axios.get(
+        "https://mousechat-mern.herokuapp.com/myprofile"
+      );
       setValidProfile(infoProfile.data);
     }
     //If there's no valid profile, request it.

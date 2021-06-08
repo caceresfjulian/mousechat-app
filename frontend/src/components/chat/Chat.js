@@ -11,7 +11,7 @@ import TextContainer from "../textContainer/TextContainer";
 
 let socket;
 
-const ENDPOINT = "localhost:4000";
+const ENDPOINT = "https://mousechat-mern.herokuapp.com/";
 
 const Chat = ({ location }) => {
   //Using Router, location shows the current browser's URL.
