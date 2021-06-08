@@ -260,6 +260,6 @@
   }
 
   #bio-box p {
-    display: none;
+    overflow: hidden;
   }
 }
