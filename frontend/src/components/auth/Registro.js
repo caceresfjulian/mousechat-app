@@ -60,6 +60,7 @@ function Registro() {
         .post("http://localhost:4000/auth", datosRegistrados)
         .then((res) => {
           if (res.status === 200) {
+            swal("Logged in", "Enjoy your visit!", "success");
             obtenerLoggeo().then(() => historial.push("/"));
           } else {
             swal("Error", res.data, "error");
