@@ -39,7 +39,7 @@ function Login() {
             swal("Error", res.data, "error");
           }
         });
-      //To make this work, should enable the cookies for the app in the backend.
+      //To make this work, should enable the cookies for the app.
       //in app.js file, add withcredentials.
     } catch (error) {
       swal("Error", "Check the provided information", "error");
