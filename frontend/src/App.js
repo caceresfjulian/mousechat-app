@@ -2,14 +2,13 @@ import React from "react";
 import axios from "axios";
 import Router from "./Router";
 import { AuthContextProvider } from "./components/context/AuthContext";
-//Para permitir la conexión del front con el back, se utiliza axios. npm i axios
+//Axios for the front to back connection "npm i axios".
 
 axios.defaults.withCredentials = true;
-//definimos withcredentials true para habilitar cookies desde el inicio de la app
+//withcredentials true to enable the cookies since the beggining of the app.
 
-//Instalamos npm i react-router-dom para utilizar rutas en nuestra app.
+//npm i react-router-dom to use routes in our app.
 function App() {
- 
   return (
     <AuthContextProvider>
       <Router />
