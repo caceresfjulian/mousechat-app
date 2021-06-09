@@ -91,9 +91,9 @@ router.post("/", async (req, res) => {
     res
       .cookie("token", token, {
         httpOnly: true,
-        domain:
-          "https://60c0029f06d4b300d9bf26f8--adoring-volhard-3bfcc3.netlify.app/",
-        path: "/dashboard",
+        domain: ".mousechat-mern.herokuapp.com",
+        sameSite: "none",
+        secure: true,
       })
       .send();
 
@@ -150,6 +150,9 @@ router.post("/login", async (req, res) => {
     res
       .cookie("token", token, {
         httpOnly: true,
+        domain: ".mousechat-mern.herokuapp.com",
+        sameSite: "none",
+        secure: true,
       })
       .send();
   } catch (error) {
@@ -163,7 +166,10 @@ router.get("/logout", (req, res) => {
   res
     .cookie("token", "", {
       httpOnly: true,
-      expires: new Date(0),
+      expires: new Date(0),    
+      domain: ".mousechat-mern.herokuapp.com",
+      sameSite: "none",
+      secure: true,
     })
     .send();
   //Instead of deleting the cooking, send a new one with the same name but expired.
