@@ -1,6 +1,6 @@
-#MouseChat - Live Chat App using the MERN stack, Figma and Socket.io
+# MouseChat - Live Chat App using the MERN stack, Figma and Socket.io
 
-##Overview
+## Overview
 
 What was your motivation?
 Why did you build this project?
