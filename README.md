@@ -10,3 +10,12 @@ logos and visual identity in general, I used <b> Figma </b>, <b>Adobe Illustrato
 
 https://mousechat-app.netlify.app/
 <br>FYI, the frontend was deployed on <b>Netlify</b> and the backend on <b>Heroku</b>. Feel free to message me through the contact form over the website.
+
+## Why these project and technologies?
+
+The MERN stack is one of the hottest stacks nowdays. It allows you to build your whole project without using
+nothing more than just Javascript. That's amazing! Also, there's a huge need for web developers out there with great comprehension on the whole process, disregarding if you're a front-end or back-end focused professional. So, as a personal project, it's a great opportunity to get a wider perspective and even work on your UI designing skills.
+
+## Challenges and more!
+
+After learning React's basics, it's normal to get ambicious and look for bigger projects. MouseChat was that kind of project for me. I built it from scratch with just some ideas written down. Personally, the deployment wasn't a piece of cake; the cookies set up and CORS gave me a headache. In the future, i'd love to build this service once again with React Native or implement a videochat service between users. 
