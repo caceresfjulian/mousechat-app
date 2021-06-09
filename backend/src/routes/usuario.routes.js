@@ -93,6 +93,7 @@ router.post("/", async (req, res) => {
         httpOnly: true,
         domain:
           "https://60c0029f06d4b300d9bf26f8--adoring-volhard-3bfcc3.netlify.app/",
+        path: "/dashboard",
       })
       .send();
 
