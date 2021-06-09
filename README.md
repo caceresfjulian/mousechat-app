@@ -2,9 +2,7 @@
 
 ## What's this all about?
 
-First of all, welcome! Greetings from Colombia. This personal project is part of my <b>MERN</b> stack
-portfolio (MongoDB, ExpressJS, React and NodeJs). For the UI design, background images,
-logos and visual identity in general, I used <b> Figma </b>, <b>Adobe Illustrator</b> and <b>Photoshop</b>. The authentication process was done using the <b>JSON Web Token technology</b> and <b>cookies</b>.
+This personal project is part of my <b>MERN</b> stack portfolio (MongoDB, ExpressJS, React and NodeJs). For the UI design, background images, logos and visual identity in general, I used <b> Figma </b>, <b>Adobe Illustrator</b> and <b>Photoshop</b>. The authentication process was done using the <b>JSON Web Token technology</b> and <b>cookies</b>.
 
 ### Deployed project:
 
@@ -18,4 +16,4 @@ nothing more than just Javascript. That's amazing! Also, there's a huge need for
 
 ## Challenges and more!
 
-After learning React's basics, it's normal to get ambicious and look for bigger projects. MouseChat was that kind of project for me. I built it from scratch with just some ideas written down. Personally, the deployment wasn't a piece of cake; the cookies set up and CORS gave me a headache. In the future, i'd love to build this service once again with React Native or implement a videochat service between users. 
+After learning React's basics, it's normal to get ambicious and look for bigger projects. MouseChat was that kind of project for me. I built it from scratch with just some ideas written down. Personally, the deployment wasn't a piece of cake; the cookies set up and CORS gave me a headache. In the future, i'd love to build this service once again with React Native or implement a videochat service between users.
