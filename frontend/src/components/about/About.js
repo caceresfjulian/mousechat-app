@@ -20,7 +20,9 @@ function About() {
     ) {
       swal("Error", "Fill the form before sending it.", "error");
     } else {
-      swal("Sending message", "Please, wait a moment", "info");
+      swal("Sending message", "Please, wait a moment", "info", {
+        button: false,
+      });
       emailjs
         .sendForm(
           "service_63lr68f",
