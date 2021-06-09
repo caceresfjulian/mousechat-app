@@ -2,7 +2,7 @@
 
 ## What's this all about?
 
-First of all, welcome! Greetings from Colombia. This personal project is part of my <h4> MERN </h4> stack
+First of all, welcome! Greetings from Colombia. This personal project is part of my <b>MERN</b> stack
 portfolio (MongoDB, ExpressJS, React and NodeJs). For the UI design, background images,
 logos and visual identity in general, I used <b> Figma </b>, <b>Adobe Illustrator</b> and <b>Photoshop</b>. The authentication process was done using the <b>JSON Web Token technology</b> and <b>cookies</b>.
 
