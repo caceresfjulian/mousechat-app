@@ -12,7 +12,7 @@ https://mousechat-app.netlify.app/
 ## Why these project and technologies?
 
 The MERN stack is one of the hottest stacks nowdays. It allows you to build your whole project without using
-nothing more than just Javascript. That's amazing! Also, there's a huge need for web developers out there with great comprehension on the whole process, disregarding if you're a front-end or back-end focused professional. So, as a personal project, it's a great opportunity to get a wider perspective and even work on your UI designing skills.
+nothing more than just Javascript. That's amazing! Also, there's a huge need for web developers out there with great comprehension on the whole process, disregarding if you're a front-end or back-end focused professional. So, as a personal project, it's one way to get a wider perspective and even work on your UI designing skills.
 
 ## Challenges and more!
 
