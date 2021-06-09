@@ -10,7 +10,7 @@ const server = http.createServer(app);
 //Set up server with express and node js' http.
 const io = socketio(server, {
   cors: {
-    origin: "https://60c0029f06d4b300d9bf26f8--mousechat-app.netlify.app",
+    origin: "https://mousechat-app.netlify.app",
     methods: ["GET", "POST"],
     credentials: true,
   },
@@ -51,7 +51,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "https://60c0029f06d4b300d9bf26f8--mousechat-app.netlify.app",
+    origin: "https://mousechat-app.netlify.app",
     credentials: true,
   })
 );
